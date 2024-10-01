@@ -60,6 +60,7 @@
     font-size: 40px;
 }
 .sobre p{
+    color:darkgray;
     padding-top:10px;
     text-align: justify;
     font-size: 20px;
@@ -74,4 +75,44 @@
     align-self: center;
     height: 80%;
     max-width: 800px;
+}
+
+.servicos{
+    background: linear-gradient(90deg, rgba(30,0,86,1) 0%, rgba(94,0,255,1) 100%);
+    display: grid;
+    justify-content: center;
+    align-content: space-around;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.servicos h2{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+.servicos ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    color: white;
+}
+.servicos li{
+    background-color: #2B2D4250;
+    border-radius: 5%;
+    padding: 20px;
+    display: grid;
+    width: 25%;
+}
+.servicos li img{
+    height: 80%;
+    max-width: 400px;
+    max-height: 400px;
+    justify-self: center;
+}
+.servicos li h3{
+    text-align: center;
+    font-size: 30px;
+}
+.servicos li p{
+    font-size: 18px;
+    color:rgb(226, 223, 223);
 }
