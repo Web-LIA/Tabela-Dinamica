@@ -3,3 +3,13 @@
     min-height: 100vh;
     min-width: 100%;
 }
+
+.capa{
+    background-color: #499b94;
+    color: white;
+    height: 80vh;
+    display: flex;
+}
+.capa div{
+    align-self: center;
+}

@@ -1,10 +1,12 @@
 import css from '../components/themes/home.module.css'
 
+import Capa from '../components/home/Capa'
+
 function Home(){
     return (
             <div className={css.Home}>
-                <h1>Tabela Dinâmica</h1>
-                <p>Utilize nossos serviços de tabela para seus projetos</p>
+                <Capa />
+                
             </div>
     )
 }
