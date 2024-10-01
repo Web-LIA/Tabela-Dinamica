@@ -5,10 +5,12 @@
 }
 
 .capa{
-    background-color: #499b94;
+    background-color: #1c4355;
     color: white;
     height: 80vh;
     display: flex;
+    justify-content: space-around;
+
 }
 .capa div{
     align-self: center;
@@ -21,4 +23,8 @@
 .capa p{
     text-align: center;
     font-size: 25px;
+}
+
+.capa img{
+    transform: rotate(-25deg);
 }
