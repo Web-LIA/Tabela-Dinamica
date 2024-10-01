@@ -5,7 +5,8 @@
 }
 
 .capa{
-    background-color: #1c4355;
+    /*background-color: #2e2746;*/
+    background: linear-gradient(90deg, rgb(8, 0, 37) 0%, rgba(30,0,86,1) 24%, rgba(62,0,128,1) 65%, rgba(128,0,255,1) 100%);
     color: white;
     height: 80vh;
     display: flex;
@@ -19,12 +20,24 @@
 }
 .capa h1{
     font-size: 50px;
+    
 }
-.capa p{
+.capa h2{
     text-align: center;
     font-size: 25px;
 }
-
 .capa img{
+    align-self: center;
+    height: 80%;
     transform: rotate(-25deg);
+    animation-name: slidein;
+    animation-duration: 2s;
 }
+@keyframes slidein {
+    from {
+      transform: translateX(100%) ;
+    }
+    to {
+      transform: translateX(0) rotate(-25deg);
+    }
+  }
