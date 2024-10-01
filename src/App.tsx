@@ -5,9 +5,15 @@ import Home from './pages/Home'
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <>
+      <div className = 'navBar'>
+
+      </div>
+      <div className='rota'>
+        <Home />
+      </div>
+      
+    </>
   );
 }
 
