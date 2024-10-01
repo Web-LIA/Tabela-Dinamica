@@ -5,7 +5,7 @@ import imagemCapa from '../../assets/home/tabelaCapa.png'
 
 function Capa(){
     return(
-        <div className={css.capa}>
+        <div className={css.capa + ' ' + css.topicos}>
             <div>
                 <h1>Tabela Dinâmica</h1>
                 <h2>Visualize seus projetos de forma dinâmica</h2>
