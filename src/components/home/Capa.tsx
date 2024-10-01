@@ -1,5 +1,6 @@
 import css from '../themes/home.module.css'
-function capa(){
+
+function Capa(){
     return(
         <div className={css.capa}>
             <div>
@@ -11,4 +12,4 @@ function capa(){
     )
 }
 
-export default capa
+export default Capa
