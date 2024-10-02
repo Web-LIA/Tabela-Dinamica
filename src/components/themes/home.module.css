@@ -29,9 +29,10 @@
 }
 .capa img{
     align-self: center;
-    height: 80%;
-    transform: rotate(-25deg);
-    animation-name: slidein;
+    height: 70%;
+    transform:rotate(-25deg);
+    overflow:hidden;
+    animation: slidein ease-in-out;
     animation-duration: 2s;
 }
 @keyframes slidein {
@@ -103,7 +104,7 @@
     width: 25%;
 }
 .servicos li img{
-    height: 80%;
+    width: 100%;
     max-width: 400px;
     max-height: 400px;
     justify-self: center;
@@ -115,4 +116,19 @@
 .servicos li p{
     font-size: 18px;
     color:rgb(226, 223, 223);
+}
+
+@media screen and (max-width: 1080px) {
+    .capa{
+        justify-content: left;
+    }
+    .capa img{
+         height: 50%;
+    }
+    .sobre img{
+        height: 50%;
+    }
+    .servicos img{
+        width: 70%;
+    }
 }

@@ -1,6 +1,3 @@
-import css from '../themes/home.module.css'
-
-
 interface TopicosProp{
     imagem:string;
     titulo:string;
