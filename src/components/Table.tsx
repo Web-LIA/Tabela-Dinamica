@@ -1,5 +1,5 @@
 import React from 'react';
-import './Tabela.css';
+import './Table.css';
 import TableRow from './TableRow';
 
 type Row = {
@@ -8,7 +8,7 @@ type Row = {
     idade: number
 } // ainda é teste. futuramente por os tipos em outro lugar
 
-function Tabela() {
+function Table() {
     const data:Row[] = [
         {id: 1, nome: 'Ryan', idade: 20},
         {id: 2, nome: 'Ariel', idade: 19},
@@ -37,4 +37,4 @@ function Tabela() {
     )    
 }
 
-export default Tabela;
+export default Table;
