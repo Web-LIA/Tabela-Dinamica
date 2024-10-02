@@ -116,6 +116,7 @@
 .servicos li p{
     font-size: 18px;
     color:rgb(226, 223, 223);
+    text-align: justify;
 }
 
 @media screen and (max-width: 1080px) {
@@ -132,3 +133,39 @@
         width: 70%;
     }
 }
+
+@media screen and (max-width: 720px) {
+    .capa{
+        display: grid; 
+        justify-items: center;  
+        text-align: center;
+    }
+    .capa div{
+        padding-bottom: 0;
+    }
+    .capa h1{
+        font-size: xx-large;
+    }
+    .capa img{
+        animation: none;
+        transform: none;
+
+        height: 80%;
+    }
+    .capa h2,.sobre h2, .sobre p span,.servicos li h3{
+        font-size:x-large;
+    }
+    .sobre p {
+        font-size: medium;
+    }
+    .servicos{
+        padding: 5%;
+    }
+    .servicos ul{
+        justify-content: space-between;
+    }
+    .servicos li p{
+        font-size: small;
+    }
+}
+
