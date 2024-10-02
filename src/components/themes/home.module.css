@@ -102,6 +102,7 @@
     padding: 20px;
     display: grid;
     width: 25%;
+    
 }
 .servicos li img{
     width: 100%;
@@ -134,26 +135,92 @@
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1024px) and (max-height: 1400px) {
     .capa{
         display: grid; 
-        justify-items: center;  
+        justify-content: center;  
         text-align: center;
     }
     .capa div{
         padding-bottom: 0;
     }
+    .capa img{
+        height: 70%;
+    }
+    .capa h2,.sobre p span,.servicos li h3{
+        font-size:x-large;
+    }
+    .sobre{
+        display: grid;
+        justify-items: center;
+    }
+   
+    .sobre img{
+        order: 1;
+        align-self: start;
+    }
+    .sobre div{
+        order: 0;
+    }
+    .servicos{
+        padding: 5%;
+        align-content: unset;
+    }
+    .servicos h2{
+        align-self: center;
+    }
+    .servicos ul{
+        justify-items: center;
+        align-items: start;
+        display: grid;
+    }
+    .servicos li{
+        width: 80%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .servicos li h3{
+        width: 100%;
+    }
+    .servicos li img{
+        width: 30%;
+    }
+    .servicos li p{
+        align-self: center;
+        padding-left: 10px;
+        width: 60%;
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 720px) and (max-height: 480px) {
+    .capa{
+        justify-items: center;  
+    }
     .capa h1{
         font-size: xx-large;
+        text-align: center;
     }
     .capa img{
         animation: none;
         transform: none;
-
         height: 80%;
     }
     .capa h2,.sobre h2, .sobre p span,.servicos li h3{
         font-size:x-large;
+    }
+    .sobre{
+        display: flex;
+        justify-items:auto;
+    }
+    .sobre img{
+        order: 0;
+        width: 50%;
+        align-self: center;
+    }
+    .sobre div{
+        order: 1;
     }
     .sobre p {
         font-size: medium;
@@ -162,10 +229,53 @@
         padding: 5%;
     }
     .servicos ul{
-        justify-content: space-between;
+        display: flex;
+        
+    }
+    .servicos li{
+        width: 25%;
+        display: grid;
+        align-items: center;
+    }
+    .servicos li h3{
+        width: auto;
+    }
+    .servicos li img{
+        width: 70%;
     }
     .servicos li p{
-        font-size: small;
+        padding-left: 0;
+        width: auto;
     }
 }
+@media screen and (max-width: 480px) {
+    .capa{
+        justify-items: center;  
+    }
+    .capa h1{
+        font-size: xx-large;
+        text-align: center;
+    }
+    .capa img{
+        animation: none;
+        transform: none;
+        height: 70%;
+    }
+    .capa h2,.sobre h2, .sobre p span,.servicos h2{
+        font-size:x-large;
+    }
+    .sobre div{
+        padding: 15px;
+        width: 85%;
+    }
+    .sobre img{
+        display: none;
+    }
+    .servicos li{
+        padding: 3%;
+    }
+    .servicos li h3{
+        font-size: large;
+    }
 
+}
