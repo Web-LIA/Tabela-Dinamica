@@ -272,11 +272,37 @@
     .sobre img{
         display: none;
     }
+    .servicos ul{
+        justify-items: center;
+        align-items: start;
+        display: grid;
+    }
     .servicos li{
         padding: 3%;
+        width: 80%;
+        height: 80%;
+        display: flex;
+        flex-wrap: wrap;
     }
     .servicos li h3{
+        width: 100%;
         font-size: large;
     }
-
+    .servicos li img{
+        width: 30%;
+    }
+    .servicos li p{
+        align-self: center;
+        padding-left: 10px;
+        width: 60%;
+        font-size: small;
+    }
+}
+@media  screen and (max-width: 320px) {
+    .servicos img{
+        display: none;
+    }
+    .servicos li p{
+        width: 100%;
+    }
 }
