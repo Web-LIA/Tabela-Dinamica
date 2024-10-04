@@ -1,8 +1,12 @@
-import css from '../themes/home.module.css'
 import grafico from '../../assets/home/graficos.gif'
-function Sobre(){
+
+interface sobreProps{
+    style:string
+}
+
+function Sobre({style}:sobreProps){
     return (
-        <div className={css.sobre + ' ' +css.topicos}>
+        <div className={style}>
             <img src={grafico} alt="Imagem de um gráfico" />
             <div>
                 <h2>Sobre<br></br>Tabela dinâmica:</h2>

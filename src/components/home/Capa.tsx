@@ -1,11 +1,11 @@
-import css from '../themes/home.module.css'
-
 import imagemCapa from '../../assets/home/tabelaCapa.png'
+interface capaProps{
+    style:string
+}
 
-
-function Capa(){
+function Capa({style}:capaProps){
     return(
-        <div className={css.capa + ' ' + css.topicos}>
+        <div className={style}>
             <div>
                 <h1>Tabela Dinâmica</h1>
                 <h2>Visualize seus projetos de forma dinâmica</h2>
