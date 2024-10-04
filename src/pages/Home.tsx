@@ -5,12 +5,14 @@ import Sobre from '../components/home/Sobre'
 import Servicos from '../components/home/Servicos'
 
 function Home(){
-    
+    function topicoStyle(style:string){
+        return style + ' ' + styles.topicos;
+    }
     return (
             <div className = {styles.Home}>
-                <Capa style = {styles.capa + ' ' + styles.topicos}   />
-                <Sobre style = {styles.sobre + ' ' + styles.topicos}  />
-                <Servicos style = {styles.servicos + ' ' + styles.topicos} />
+                <Capa style = {topicoStyle(styles.capa)}   />
+                <Sobre style = {topicoStyle(styles.sobre)}  />
+                <Servicos style = {topicoStyle(styles.servicos)} />
             </div>
     )
 }
