@@ -35,6 +35,12 @@ function Table() {
         e.preventDefault()
         setData([...data, {id: newData.id, nome: newData.nome, idade:newData.idade}])
     }
+    function removeRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        let auxData = [...data]
+        auxData = auxData.filter(row => row.id !== parseInt(e.currentTarget.id))
+        // ta quebrando quando apaga todo o array
+        setData(auxData)
+    }
     
     return (
         <>
@@ -55,7 +61,7 @@ function Table() {
             <tbody>
                 {
                     data.map(row =>
-                        <TableRow id={row.id} nome={row.nome} idade={row.idade} />
+                        <TableRow row={row} rowMethods={{removeRow: removeRow}}/>
                     )
                 }
             </tbody>
