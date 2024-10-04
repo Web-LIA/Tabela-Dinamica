@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './Table.css';
 import TableRow from './TableRow';
+import TableRowEdit from './TableRowEdit';
 
 type Row = {
     id: number,
@@ -17,6 +18,7 @@ function Table() {
 
     ])
     const [newData, setNewData] = useState<Row>({id: 0, nome: '', idade: 0})
+    const [edit, setEdit] = useState<boolean>(false)
     const keys: string[] = Object.keys(data[0]);
 
     function updateNewData(e: React.ChangeEvent<HTMLInputElement>) {
@@ -50,6 +52,7 @@ function Table() {
             <input id='idade' type='number' placeholder='idade' onChange={updateNewData}/>
             <button type='submit'>Adicionar</button>
         </form>
+        <button onClick={(e) => setEdit(!edit)}>Editar</button>
         <table>
             <thead>
                 <tr>
@@ -59,10 +62,15 @@ function Table() {
                 </tr>
             </thead>
             <tbody>
-                {
-                    data.map(row =>
+                { !edit &&
+                    (data.map(row =>
                         <TableRow row={row} rowMethods={{removeRow: removeRow}}/>
-                    )
+                    ))
+                }
+                { edit &&
+                    (data.map(row =>
+                        <TableRowEdit row={row} rowMethods={{removeRow: removeRow}}/>
+                    ))
                 }
             </tbody>
         </table>
