@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import './Table.css';
+import themes from './themes/Table.module.css';
 import TableRow from './TableRow';
 
 type Row = {
@@ -44,12 +44,13 @@ function Table() {
     
     return (
         <>
-        <form onSubmit={addRow}>
+        <form onSubmit={addRow} >
             <input id='id' type='number' placeholder='id' onChange={updateNewData}/>
             <input id='nome' type='text' placeholder='nome' onChange={updateNewData}/>
             <input id='idade' type='number' placeholder='idade' onChange={updateNewData}/>
             <button type='submit'>Adicionar</button>
         </form>
+        <div className={themes.tabela}>
         <table>
             <thead>
                 <tr>
@@ -66,6 +67,7 @@ function Table() {
                 }
             </tbody>
         </table>
+        </div>
         </>
     )    
 }
