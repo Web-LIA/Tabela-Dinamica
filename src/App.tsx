@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './components/navBar/navBar'
+import NavBar from './components/navBar'
 import './App.css';
 
 function App() {
@@ -9,8 +9,7 @@ function App() {
     <div className='rota'>
       <h1>AAAAAAAAAAAAAAAAA</h1>
     </div>
-    
-  </>
+    </>
   );
 }
 
