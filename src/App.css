@@ -1,31 +1,32 @@
 .navBar{
   color:white;
- 
+
   .lateral{
-    padding-top: 80px;
+    padding-top: 100px;
     height: 100vh;
     width: 80px;
-    justify-content: center;
     ul{
       display: grid;
-      
+      align-content: space-between; 
+      height: calc(100vh - 80px - 100px);
+      li{
+        font-size: large;
+        width: 80px;
+      }
     }
-
   }
   .superior{
     width: 100vw;
     height: 80px;
     align-items: center;
     ul{
-      
       display: flex;
       justify-content: space-between;
-      width: 100%;
+      width: calc(100vw - 80px);
       img{
         width: 80px;
         height: 80px;
-      }
-      
+      } 
     }
   }
   ul{
@@ -35,6 +36,7 @@
     align-content: center;
     font-size: xx-large;
     text-transform: uppercase;
+    text-align: center;
     font-weight: bold;
   }
   div{

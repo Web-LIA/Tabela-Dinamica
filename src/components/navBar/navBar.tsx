@@ -19,7 +19,7 @@ function NavBar({ style, user }:navProps){
             </div>
             <div className="superior">
                 <ul>
-                    <li><img src={logo} alt="LOGO"/></li>
+                    <li><a href="/"><img src={logo} alt="LOGO"/></a></li>
                     <li>Teste</li>
                     <li>Teste</li>
                     <li>Teste</li>
