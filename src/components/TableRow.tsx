@@ -8,6 +8,7 @@ type Row = {
 
 type RowMethods = {
     removeRow: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    editRow: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 type TableRowProps = {
@@ -25,7 +26,10 @@ function TableRow(props: TableRowProps) {
             {
                 keys.map( key => <td key={key}>{row[key]}</td>)
             }
-            <td><button id={row.id+""} onClick={props.rowMethods.removeRow}>X</button></td>
+            <td>
+                <button id={row.id+""} onClick={props.rowMethods.editRow}>Editar</button>
+                <button id={row.id+""} onClick={props.rowMethods.removeRow}>X</button>
+            </td>
         </tr>
     )
 }

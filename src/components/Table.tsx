@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './Table.css';
 import TableRow from './TableRow';
+import TableRowEdit from './TableRowEdit';
 
 type Row = {
     id: number,
@@ -17,6 +18,7 @@ function Table() {
 
     ])
     const [newData, setNewData] = useState<Row>({id: 0, nome: '', idade: 0})
+    const [editDataId, setEditDataId] = useState<number>(0)
     const keys: string[] = Object.keys(data[0]);
 
     function updateNewData(e: React.ChangeEvent<HTMLInputElement>) {
@@ -41,6 +43,14 @@ function Table() {
         // ta quebrando quando apaga todo o array
         setData(auxData)
     }
+    function editRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        setEditDataId(parseInt(e.currentTarget.id))
+    }
+    function sendEditRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        let auxData = [...data]
+        const id = parseInt(e.currentTarget.id)
+        setEditDataId(0)
+    }
     
     return (
         <>
@@ -61,7 +71,14 @@ function Table() {
             <tbody>
                 {
                     data.map(row =>
-                        <TableRow row={row} rowMethods={{removeRow: removeRow}}/>
+                        <>
+                        {(row.id !== editDataId) && (
+                            <TableRow row={row} rowMethods={{removeRow: removeRow, editRow: editRow}}/>
+                        )}
+                        {(row.id === editDataId) && (
+                            <TableRowEdit row={row} rowMethods={{removeRow: removeRow, sendEditRow: sendEditRow}}/>
+                        )}
+                        </>
                     )
                 }
             </tbody>
