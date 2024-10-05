@@ -1,14 +1,13 @@
 import React from 'react';
+import NavBar from './components/navBar/navBar'
 import './App.css';
-import Tabela from './components/Table'
+
 function App() {
   return (
     <>
-    <div className = 'navBar'>
-
-    </div>
+    <NavBar  style = "navBar"/>
     <div className='rota'>
-      <Tabela />
+      <h1>AAAAAAAAAAAAAAAAA</h1>
     </div>
     
   </>

@@ -1,10 +1,52 @@
 .navBar{
-  
-  
+  color:white;
+ 
+  .lateral{
+    padding-top: 80px;
+    height: 100vh;
+    width: 80px;
+    justify-content: center;
+    ul{
+      display: grid;
+      
+    }
+
+  }
+  .superior{
+    width: 100vw;
+    height: 80px;
+    align-items: center;
+    ul{
+      
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      img{
+        width: 80px;
+        height: 80px;
+      }
+      
+    }
+  }
+  ul{
+    list-style-type: none;
+  }
+  li{
+    align-content: center;
+    font-size: xx-large;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  div{
+    background-color: black;
+    position: fixed;
+    padding: 10px;
+    display: flex;
+  }
 }
 
 .rota{
   padding-top: 100px;
   padding-left: 100px;
-  background-color: black;
+  background-color: blue;
 }  
