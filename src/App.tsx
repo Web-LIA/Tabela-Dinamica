@@ -7,7 +7,7 @@ function App() {
     <>
     <NavBar  style = "navBar"/>
     <div className='rota'>
-      <h1>AAAAAAAAAAAAAAAAA</h1>
+      
     </div>
     </>
   );
