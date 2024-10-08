@@ -33,12 +33,12 @@ function Table() {
     }
     function removeRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         let auxData = [...data]
-        auxData = auxData.filter(row => row.id !== parseInt(e.currentTarget.id))
+        auxData = auxData.filter(row => row.id !== parseInt(e.currentTarget.name))
         // ta quebrando quando apaga todo o array
         setData(auxData)
     }
     function editRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        setEditDataId(parseInt(e.currentTarget.id))
+        setEditDataId(parseInt(e.currentTarget.name))
     }
     
     const rowMethods = {removeRow: removeRow, editRow: editRow}

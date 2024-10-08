@@ -12,10 +12,10 @@ function TableRow(props: TableRowProps) {
                 keys.map( key => <td key={key}>{row[key]}</td>)
             }
             <td>
-                <button id={row.id+""} onClick={props.rowMethods.editRow}>Editar</button>
+                <button name={row.id+""} onClick={props.rowMethods.editRow}>Editar</button>
             </td>
             <td>
-                <button id={row.id+""} onClick={props.rowMethods.removeRow}>X</button>
+                <button name={row.id+""} onClick={props.rowMethods.removeRow}>X</button>
             </td>
         </tr>
     )
