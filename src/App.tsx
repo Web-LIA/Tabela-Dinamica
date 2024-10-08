@@ -11,7 +11,8 @@ function App() {
         <NavBar  style = "navBar"/>
       </div>
       <div className='rota'>
-        <Home />
+        <Home/>
+        {/* <Tabela/> */}
       </div>
     </>
   );
