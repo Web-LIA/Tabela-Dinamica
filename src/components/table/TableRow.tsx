@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, TableRowProps } from "../types";
+import { Row, TableRowProps } from "../../types";
 
 function TableRow(props: TableRowProps) {
     const row = props.row

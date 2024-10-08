@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './components/navBar'
 import './App.css';
-import Tabela from './components/Table'
+import Table from './pages/Table'
 import Home from './pages/Home'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       </div>
       <div className='rota'>
         <Home/>
-        {/* <Tabela/> */}
+        {/* <Table/> */}
       </div>
     </>
   );

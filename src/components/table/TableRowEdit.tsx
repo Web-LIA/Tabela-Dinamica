@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Row, TableRowEditProps } from "../types";
+import { Row, TableRowEditProps } from "../../types";
 
 function TableRowEdit(props: TableRowEditProps) {
     const row = props.row

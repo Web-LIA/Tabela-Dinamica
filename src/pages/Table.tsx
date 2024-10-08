@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import themes from './themes/Table.module.css';
-import TableRow from './TableRow';
-import TableRowEdit from './TableRowEdit';
+import themes from '../components/themes/Table.module.css';
+import TableRow from '../components/table/TableRow';
+import TableRowEdit from '../components/table/TableRowEdit';
 import { Row } from '../types';
 
 function Table() {
