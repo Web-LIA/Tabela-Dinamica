@@ -46,11 +46,9 @@ function Table() {
     function editRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         setEditDataId(parseInt(e.currentTarget.id))
     }
-    function sendEditRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        let auxData = [...data]
-        const id = parseInt(e.currentTarget.id)
-        setEditDataId(0)
-    }
+    
+    const rowMethods = {removeRow: removeRow, editRow: editRow}
+    const editRowMethods = {removeRow: removeRow, editRow: editRow, setData: setData, setEditDataId: setEditDataId}
     
     return (
         <>
@@ -73,10 +71,10 @@ function Table() {
                     data.map(row =>
                         <>
                         {(row.id !== editDataId) && (
-                            <TableRow row={row} rowMethods={{removeRow: removeRow, editRow: editRow}}/>
+                            <TableRow row={row} rowMethods={rowMethods}/>
                         )}
                         {(row.id === editDataId) && (
-                            <TableRowEdit row={row} rowMethods={{removeRow: removeRow, sendEditRow: sendEditRow}}/>
+                            <TableRowEdit row={row} rowMethods={editRowMethods} data={data}/>
                         )}
                         </>
                     )
