@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/navBar'
 import './App.css';
+import Tabela from './components/Table'
 import Home from './pages/Home'
 
 function App() {
