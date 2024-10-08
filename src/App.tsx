@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-
+import Tabela from './components/Table'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Tabela Dinâmica</h1>
-      </header>
+    <>
+    <div className = 'navBar'>
+
     </div>
+    <div className='rota'>
+      <Tabela />
+    </div>
+    
+  </>
   );
 }
 
