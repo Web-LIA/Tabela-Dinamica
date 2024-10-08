@@ -25,14 +25,14 @@ function TableRowEdit(props: TableRowProps) {
     const data = props.data
     type tableCell = keyof typeof row
     const keys: tableCell[] = Object.keys(row).filter((key): key is keyof Row => key in row && key != "id")
-    const [newRow, setNewRow] = useState<Row>(row)
+    const [editedData, setEditedData] = useState<Row>(row)
 
-    function updateRow(e: React.ChangeEvent<HTMLInputElement>) {
+    function updateEditedData(e: React.ChangeEvent<HTMLInputElement>) {
         if(e.target.placeholder == 'nome') {
-            setNewRow({...newRow, nome: e.target.value})
+            setEditedData({...editedData, nome: e.target.value})
         }
         if(e.target.placeholder == 'idade') {
-            setNewRow({...newRow, idade: parseInt(e.target.value)})
+            setEditedData({...editedData, idade: parseInt(e.target.value)})
         }
     }
     function sendEditRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -40,7 +40,7 @@ function TableRowEdit(props: TableRowProps) {
         const id = parseInt(e.currentTarget.id)
         auxData.map((row, index) => {
             if(row['id'] == id) {
-                auxData[index] = newRow
+                auxData[index] = editedData
             }
         })
         props.rowMethods.setData(auxData)
@@ -51,7 +51,7 @@ function TableRowEdit(props: TableRowProps) {
         <tr key={row.id}>
             <td key={'id'}>{row['id']}</td>
             {
-                keys.map( key => <td key={key}><input type="text" placeholder={key} onChange={updateRow}/></td>)
+                keys.map( key => <td key={key}><input type="text" placeholder={key} onChange={updateEditedData}/></td>)
             }
             <td>
                 <button id={row.id+""} onClick={sendEditRow}>Enviar</button>

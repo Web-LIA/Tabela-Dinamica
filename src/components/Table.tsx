@@ -32,7 +32,6 @@ function Table() {
             setNewData({...newData, idade: parseInt(e.target.value)})
         }
     }
-
     function addRow(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         setData([...data, {id: newData.id, nome: newData.nome, idade:newData.idade}])
@@ -70,12 +69,11 @@ function Table() {
                 {
                     data.map(row =>
                         <>
-                        {(row.id !== editDataId) && (
+                        {(row.id !== editDataId) ? (
                             <TableRow row={row} rowMethods={rowMethods}/>
-                        )}
-                        {(row.id === editDataId) && (
+                        ) :
                             <TableRowEdit row={row} rowMethods={editRowMethods} data={data}/>
-                        )}
+                        }
                         </>
                     )
                 }
