@@ -13,6 +13,8 @@ function TableRow(props: TableRowProps) {
             }
             <td>
                 <button id={row.id+""} onClick={props.rowMethods.editRow}>Editar</button>
+            </td>
+            <td>
                 <button id={row.id+""} onClick={props.rowMethods.removeRow}>X</button>
             </td>
         </tr>

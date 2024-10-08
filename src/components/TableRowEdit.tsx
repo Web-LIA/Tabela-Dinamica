@@ -37,6 +37,8 @@ function TableRowEdit(props: TableRowEditProps) {
             }
             <td>
                 <button id={row.id+""} onClick={sendEditRow}>Enviar</button>
+            </td>
+            <td>
                 <button id={row.id+""} onClick={props.rowMethods.removeRow}>X</button>
             </td>
         </tr>
