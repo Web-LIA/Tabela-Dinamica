@@ -3,12 +3,7 @@ import { useState } from 'react';
 import './Table.css';
 import TableRow from './TableRow';
 import TableRowEdit from './TableRowEdit';
-
-type Row = {
-    id: number,
-    nome: string,
-    idade: number
-} // ainda é teste. futuramente por os tipos em outro lugar
+import { Row } from '../types';
 
 function Table() {
     const [data, setData]  = useState<Row[]>([

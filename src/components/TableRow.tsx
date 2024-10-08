@@ -1,20 +1,5 @@
 import React from "react";
-
-type Row = {
-    id: number,
-    nome: string,
-    idade: number,
-} // ainda é teste. futuramente por os tipos em outro lugar
-
-type RowMethods = {
-    removeRow: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-    editRow: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-}
-
-type TableRowProps = {
-    row: Row,
-    rowMethods: RowMethods
-}
+import { Row, TableRowProps } from "../types";
 
 function TableRow(props: TableRowProps) {
     const row = props.row

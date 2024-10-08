@@ -1,26 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import { Row, TableRowEditProps } from "../types";
 
-type Row = {
-    id: number,
-    nome: string,
-    idade: number,
-} // ainda é teste. futuramente por os tipos em outro lugar
-
-type RowMethods = {
-    removeRow?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-    editRow?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-    setData: React.Dispatch<React.SetStateAction<Row[]>>
-    setEditDataId: React.Dispatch<React.SetStateAction<number>>
-}
-
-type TableRowProps = {
-    row: Row,
-    rowMethods: RowMethods
-    data: Row[]
-}
-
-function TableRowEdit(props: TableRowProps) {
+function TableRowEdit(props: TableRowEditProps) {
     const row = props.row
     const data = props.data
     type tableCell = keyof typeof row
