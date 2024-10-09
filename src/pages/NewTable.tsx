@@ -5,6 +5,7 @@ import TableRow from '../components/newTable/TableRow'
 import FormAddRow from '../components/newTable/FormAddRow'
 import FormAddColumn from '../components/newTable/FormAddColumn'
 import TableHeader from '../components/newTable/TableHeader'
+import TableRowEdit from '../components/newTable/TableRowEdit'
 
 type RowData = {
     id: string
@@ -13,6 +14,12 @@ type RowData = {
 
 type TableRowMethods = {
     removeRow: (id: string) => void
+    setEditRowId: React.Dispatch<React.SetStateAction<string>>
+}
+
+type TableRowEditMethods = {
+    removeRow: (id: string) => void
+    editRow: (editedRowData: RowData) => void
 }
 
 function NewTable() {
@@ -25,7 +32,12 @@ function NewTable() {
     const [keys, setKeys] = useState<string[]>(Object.keys(data[0]))
     const [newKey, setNewKey] = useState<string>("")
     const [editMode, setEditMode] = useState<boolean>(false)
+    const [editRowId, setEditRowId] = useState<string>("")
 
+    function changeEditMode() {
+        setEditRowId("")
+        setEditMode(!editMode)
+    }
     function addColumn(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         setKeys([...keys, newKey])
@@ -76,12 +88,24 @@ function NewTable() {
         // ta quebrando quando apaga todo o array
         setData(auxData)
     }
+    function editRow(editedRowData: RowData) {
+        let auxData = [...data]
+        const id = editedRowData.id
+        auxData.forEach((rowData, index) => {
+            if(rowData['id'] === id) {
+                auxData[index] = editedRowData
+            }
+        })
+        setData(auxData)
+        setEditRowId("")
+    }
 
-    const tableRowMethods: TableRowMethods = {removeRow: removeRow}
+    const tableRowMethods: TableRowMethods = {removeRow: removeRow, setEditRowId: setEditRowId}
+    const tableRowEditMethods: TableRowEditMethods = {removeRow: removeRow, editRow: editRow}
 
     return (
         <>
-        <button onClick={() => setEditMode(!editMode)}>Editar</button>
+        <button onClick={changeEditMode}>Editar</button>
         { editMode && (
             <>
             <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
@@ -91,11 +115,17 @@ function NewTable() {
         <table border={1}>
             <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn}/>
             <tbody>
-                    {
-                        data.map(rowData => (
+                {
+                    data.map(rowData =>
+                        <>
+                        { rowData.id !== editRowId ? (
                             <TableRow rowData={rowData} editMode={editMode} keys={keys} methods={tableRowMethods}/>
-                        ))
-                    }
+                        ) : (
+                            <TableRowEdit rowData={rowData} keys={keys} methods={tableRowEditMethods}/>
+                        )}
+                        </>
+                    )
+                }
             </tbody>
         </table>
         </>

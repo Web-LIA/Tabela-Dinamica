@@ -7,6 +7,7 @@ type RowData = {
 
 type TableRowMethods = {
     removeRow: (id: string) => void
+    setEditRowId: React.Dispatch<React.SetStateAction<string>>
 }
 
 type TableRowProps = {
@@ -26,7 +27,7 @@ function TableRow(props: TableRowProps) {
             { props.editMode && (
                 <>
                 <td>
-                    <button name={rowData.id+""}>Editar</button>
+                    <button onClick={() => props.methods.setEditRowId(rowData.id)}>Editar</button>
                 </td>
                 <td>
                     <button onClick={() => props.methods.removeRow(rowData.id)}>X</button>
