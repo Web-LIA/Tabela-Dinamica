@@ -5,11 +5,15 @@ type RowData = {
     [key: string]: string
 }
 
+type TableRowMethods = {
+    removeRow: (id: string) => void
+}
+
 type TableRowProps = {
     rowData: RowData
     keys: string[]
     editMode: boolean
-    methods?: any
+    methods: TableRowMethods
 }
 
 function TableRow(props: TableRowProps) {
@@ -25,7 +29,7 @@ function TableRow(props: TableRowProps) {
                     <button name={rowData.id+""}>Editar</button>
                 </td>
                 <td>
-                    <button name={rowData.id+""}>X</button>
+                    <button onClick={() => props.methods.removeRow(rowData.id)}>X</button>
                 </td>
                 </>
             )}

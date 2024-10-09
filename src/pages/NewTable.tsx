@@ -11,6 +11,10 @@ type RowData = {
     [key: string]: string
 }
 
+type TableRowMethods = {
+    removeRow: (id: string) => void
+}
+
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
         {id: "00000", nome: "Ryan", idade: "20"},
@@ -66,6 +70,14 @@ function NewTable() {
         e.preventDefault()
         setData([...data, {...newRowData, id: generateId()}])
     }
+    function removeRow(id: string) {
+        let auxData = [...data]
+        auxData = auxData.filter(rowData => rowData.id !== id)
+        // ta quebrando quando apaga todo o array
+        setData(auxData)
+    }
+
+    const tableRowMethods: TableRowMethods = {removeRow: removeRow}
 
     return (
         <>
@@ -80,7 +92,9 @@ function NewTable() {
             <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn}/>
             <tbody>
                     {
-                        data.map(rowData => <TableRow rowData={rowData} editMode={editMode} keys={keys}/>)
+                        data.map(rowData => (
+                            <TableRow rowData={rowData} editMode={editMode} keys={keys} methods={tableRowMethods}/>
+                        ))
                     }
             </tbody>
         </table>

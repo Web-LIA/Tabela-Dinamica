@@ -12,9 +12,12 @@ function TableHeader(props: TableHeaderProps) {
             { props.editMode ? (
                 <tr>
                     {
-                        props.keys.map(key => (
+                        <>
+                       <th key="id">id</th> 
+                        {props.keys.filter(key => key !== "id").map(key => (
                             <th key={key}>{key} <button onClick={() => props.removeColumn(key)}>X</button></th>
-                        ))
+                        ))}
+                        </>
                     }
                 </tr>
             ) : (
