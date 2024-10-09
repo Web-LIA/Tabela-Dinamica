@@ -3,6 +3,7 @@ import { useState } from 'react'
 //import themes from '../components/themes/Table.module.css'
 import TableRow from '../components/newTable/TableRow'
 import FormAddRow from '../components/newTable/FormAddRow'
+import FormAddColumn from '../components/newTable/FormAddColumn'
 
 type RowData = {
     id: string
@@ -15,10 +16,13 @@ function NewTable() {
         {id: "00001", nome: "Ariel", idade: "19"},
         {id: "00002", nome: "Dede", idade: "19"}
     ])
-    const [keys, setKeys] = useState<string[]>(Object.keys(data[0]))
     const [newRowData, setNewRowData] = useState<RowData>({id: "", nome: "", idade: ""})
+    const [keys, setKeys] = useState<string[]>(Object.keys(data[0]))
+    const [newKey, setNewKey] = useState<string>("")
+    const [editMode, setEditMode] = useState<boolean>(false)
 
-    function addColumn(newKey: string) {
+    function addColumn(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
         setKeys([...keys, newKey])
         setNewRowData({...newRowData, [newKey]: ""})
         const newData: RowData[] = data.map(rowData => (
@@ -64,9 +68,14 @@ function NewTable() {
 
     return (
         <>
-        <button onClick={() => addColumn("teste")}>Adicionar Campo</button>
-        <button onClick={() => removeColumn("teste")}>Remover Campo</button>
-        <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+        {/* <button onClick={() => removeColumn("teste")}>Remover Campo</button> */}
+        <button onClick={() => setEditMode(!editMode)}>Editar</button>
+        { editMode && (
+            <>
+            <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
+            <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+            </>
+        )}
         <table border={1}>
             <thead>
                 <tr>
@@ -77,7 +86,7 @@ function NewTable() {
             </thead>
             <tbody>
                     {
-                        data.map(rowData => <TableRow rowData={rowData} keys={keys}/>)
+                        data.map(rowData => <TableRow rowData={rowData} editMode={editMode} keys={keys}/>)
                     }
             </tbody>
         </table>

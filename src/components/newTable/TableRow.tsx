@@ -8,6 +8,7 @@ type RowData = {
 type TableRowProps = {
     rowData: RowData
     keys: string[]
+    editMode: boolean
     methods?: any
 }
 
@@ -18,12 +19,16 @@ function TableRow(props: TableRowProps) {
             {
                 props.keys.map( key => <td key={key}>{rowData[key]}</td>)
             }
-            <td>
-                <button name={rowData.id+""}>Editar</button>
-            </td>
-            <td>
-                <button name={rowData.id+""}>X</button>
-            </td>
+            { props.editMode && (
+                <>
+                <td>
+                    <button name={rowData.id+""}>Editar</button>
+                </td>
+                <td>
+                    <button name={rowData.id+""}>X</button>
+                </td>
+                </>
+            )}
         </tr>
     )
 }
