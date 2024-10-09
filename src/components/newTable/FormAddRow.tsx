@@ -8,7 +8,7 @@ function FormAddRow(props: FormAddRowProps) {
     return(
         <form onSubmit={props.addRow}>
             {
-                keys.map(key => <input type="text" placeholder={key} id={key} onChange={props.updateNewRowData}/>)
+                keys.map(key => <input type="text" placeholder={key} id={key} onChange={props.updateNewRowData} required/>)
             }
             <button type="submit">Adicionar Linha</button>
         </form>

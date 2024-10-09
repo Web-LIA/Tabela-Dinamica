@@ -6,7 +6,7 @@ function FormAddColumn(props: FormAddColumnProps) {
 
     return(
         <form onSubmit={props.addColumn}>
-            <input type="text" placeholder="novo campo" onChange={(e) => props.setNewKey(e.target.value)}/>
+            <input type="text" placeholder="novo campo" onChange={(e) => props.setNewKey(e.target.value)} required />
             <button type="submit">Adicionar Coluna</button>
         </form>
     )
