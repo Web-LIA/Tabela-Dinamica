@@ -1,16 +1,5 @@
 import React from "react"
-
-type RowData = {
-    id: string
-    [key: string]: string
-}
-
-type FormAddRowProps = {
-    keys: string[]
-    data: RowData[]
-    updateNewRowData: (e: React.ChangeEvent<HTMLInputElement>) => void
-    addRow: (e: React.FormEvent<HTMLFormElement>) => void
-}
+import { RowData, FormAddRowProps } from "../../typesNewTable"
 
 function FormAddRow(props: FormAddRowProps) {
     //adcionar tratamento de erros futuramente

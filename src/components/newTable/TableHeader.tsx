@@ -1,10 +1,5 @@
 import React from "react"
-
-type TableHeaderProps = {
-    keys: string[]
-    editMode: boolean
-    removeColumn: (removeKey: string) => void
-}
+import { TableHeaderProps } from "../../typesNewTable"
 
 function TableHeader(props: TableHeaderProps) {
     return (

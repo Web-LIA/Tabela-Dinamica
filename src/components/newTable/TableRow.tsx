@@ -1,21 +1,5 @@
 import React from "react"
-
-type RowData = {
-    id: string
-    [key: string]: string
-}
-
-type TableRowMethods = {
-    removeRow: (id: string) => void
-    setEditRowId: React.Dispatch<React.SetStateAction<string>>
-}
-
-type TableRowProps = {
-    rowData: RowData
-    keys: string[]
-    editMode: boolean
-    methods: TableRowMethods
-}
+import { RowData, TableRowMethods, TableRowProps } from "../../typesNewTable"
 
 function TableRow(props: TableRowProps) {
     const rowData = props.rowData

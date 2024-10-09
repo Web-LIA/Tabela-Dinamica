@@ -1,21 +1,6 @@
 import React from "react"
 import { useState } from "react"
-
-type RowData = {
-    id: string
-    [key: string]: string
-}
-
-type TableRowEditMethods = {
-    removeRow: (id: string) => void
-    editRow: (editedRowData: RowData) => void
-}
-
-type TableRowEditProps = {
-    rowData: RowData
-    keys: string[]
-    methods: TableRowEditMethods
-}
+import { RowData, TableRowEditMethods, TableRowEditProps } from "../../typesNewTable"
 
 function TableRowEdit(props: TableRowEditProps) {
     const rowData = props.rowData

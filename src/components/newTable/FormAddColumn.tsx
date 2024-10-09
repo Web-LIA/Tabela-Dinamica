@@ -1,10 +1,5 @@
 import React from "react"
-
-type FormAddColumnProps = {
-    keys: string[]
-    setNewKey: React.Dispatch<React.SetStateAction<string>>
-    addColumn: (e: React.FormEvent<HTMLFormElement>) => void
-}
+import { FormAddColumnProps } from "../../typesNewTable"
 
 function FormAddColumn(props: FormAddColumnProps) {
     //adcionar tratamento de erros futuramente

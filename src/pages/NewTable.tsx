@@ -1,26 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
-//import themes from '../components/themes/Table.module.css'
+import themes from '../components/themes/Table.module.css'
 import TableRow from '../components/newTable/TableRow'
 import FormAddRow from '../components/newTable/FormAddRow'
 import FormAddColumn from '../components/newTable/FormAddColumn'
 import TableHeader from '../components/newTable/TableHeader'
 import TableRowEdit from '../components/newTable/TableRowEdit'
-
-type RowData = {
-    id: string
-    [key: string]: string
-}
-
-type TableRowMethods = {
-    removeRow: (id: string) => void
-    setEditRowId: React.Dispatch<React.SetStateAction<string>>
-}
-
-type TableRowEditMethods = {
-    removeRow: (id: string) => void
-    editRow: (editedRowData: RowData) => void
-}
+import { RowData, TableRowMethods, TableRowEditMethods } from '../typesNewTable'
 
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
@@ -112,6 +98,7 @@ function NewTable() {
             <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
             </>
         )}
+        <div className={themes.tabela}>
         <table border={1}>
             <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn}/>
             <tbody>
@@ -128,6 +115,7 @@ function NewTable() {
                 }
             </tbody>
         </table>
+        </div>
         </>
     )
 }
