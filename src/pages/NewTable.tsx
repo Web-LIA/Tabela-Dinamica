@@ -19,10 +19,18 @@ function NewTable() {
     const [newKey, setNewKey] = useState<string>("")
     const [editMode, setEditMode] = useState<boolean>(false)
     const [editRowId, setEditRowId] = useState<string>("")
+    const [backupData, setBackupData] = useState<RowData[]>(data)
+    const [backupKeys, setBackupKeys] = useState<string[]>(keys)
 
     function changeEditMode() {
+        setBackupData(data)
+        setBackupKeys(keys)
         setEditRowId("")
         setEditMode(!editMode)
+    }
+    function discardChanges() {
+        setData(backupData)
+        setKeys(backupKeys)
     }
     function addColumn(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -100,7 +108,7 @@ function NewTable() {
         )}
         <div className={themes.tabela}>
         <table border={1}>
-            <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn}/>
+            <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn} discardChanges={discardChanges}/>
             <tbody>
                 {
                     data.map(rowData =>

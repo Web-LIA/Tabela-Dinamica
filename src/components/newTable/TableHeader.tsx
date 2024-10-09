@@ -12,6 +12,7 @@ function TableHeader(props: TableHeaderProps) {
                         {props.keys.filter(key => key !== "id").map(key => (
                             <th key={key}>{key} <button onClick={() => props.removeColumn(key)}>X</button></th>
                         ))}
+                        <th colSpan={2}><button onClick={props.discardChanges}>Descartar Mudanças</button></th>
                         </>
                     }
                 </tr>

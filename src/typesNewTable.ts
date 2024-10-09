@@ -43,4 +43,5 @@ export type TableHeaderProps = {
     keys: string[]
     editMode: boolean
     removeColumn: (removeKey: string) => void
+    discardChanges: () => void
 }
