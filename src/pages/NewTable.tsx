@@ -71,8 +71,8 @@ function NewTable() {
     function removeRow(id: string) {
         let auxData = [...data]
         auxData = auxData.filter(rowData => rowData.id !== id)
-        // ta quebrando quando apaga todo o array
-        setData(auxData)
+        if (auxData.length > 0) setData(auxData)
+        // programa quebra se apagar todo o array
     }
     function editRow(editedRowData: RowData) {
         let auxData = [...data]
