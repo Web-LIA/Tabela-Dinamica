@@ -4,6 +4,7 @@ import { useState } from 'react'
 import TableRow from '../components/newTable/TableRow'
 import FormAddRow from '../components/newTable/FormAddRow'
 import FormAddColumn from '../components/newTable/FormAddColumn'
+import TableHeader from '../components/newTable/TableHeader'
 
 type RowData = {
     id: string
@@ -68,7 +69,6 @@ function NewTable() {
 
     return (
         <>
-        {/* <button onClick={() => removeColumn("teste")}>Remover Campo</button> */}
         <button onClick={() => setEditMode(!editMode)}>Editar</button>
         { editMode && (
             <>
@@ -77,13 +77,7 @@ function NewTable() {
             </>
         )}
         <table border={1}>
-            <thead>
-                <tr>
-                    {
-                        keys.map(key => <th key={key}>{key}</th>)
-                    }
-                </tr>
-            </thead>
+            <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn}/>
             <tbody>
                     {
                         data.map(rowData => <TableRow rowData={rowData} editMode={editMode} keys={keys}/>)
