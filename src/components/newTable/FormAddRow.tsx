@@ -14,11 +14,12 @@ type FormAddRowProps = {
 
 function FormAddRow(props: FormAddRowProps) {
     //adcionar tratamento de erros futuramente
+    const keys = props.keys.filter(key => (key !== "id"))
 
     return(
         <form onSubmit={props.addRow}>
             {
-                props.keys.map(key => <input type="text" placeholder={key} id={key} onChange={props.updateNewRowData}/>)
+                keys.map(key => <input type="text" placeholder={key} id={key} onChange={props.updateNewRowData}/>)
             }
             <button type="submit">Adicionar Linha</button>
         </form>

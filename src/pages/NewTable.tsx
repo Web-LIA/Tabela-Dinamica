@@ -11,9 +11,9 @@ type RowData = {
 
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
-        {id: "1", nome: "Ryan", idade: "20"},
-        {id: "2", nome: "Ariel", idade: "19"},
-        {id: "3", nome: "Dede", idade: "19"}
+        {id: "00000", nome: "Ryan", idade: "20"},
+        {id: "00001", nome: "Ariel", idade: "19"},
+        {id: "00002", nome: "Dede", idade: "19"}
     ])
     const [keys, setKeys] = useState<string[]>(Object.keys(data[0]))
     const [newRowData, setNewRowData] = useState<RowData>({id: "", nome: "", idade: ""})
@@ -44,9 +44,22 @@ function NewTable() {
             }
         })
     }
+    function generateId() {
+        let id = ""
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        let index = 0
+        do {
+            id = ""
+            for (let i = 0; i < 5; i++) {
+                index = Math.floor(Math.random() * characters.length);
+                id += characters[index];
+            }
+        } while(data.find(rowData => {return (rowData.id === id)}))
+        return id
+    }
     function addRow(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        setData([...data, newRowData])
+        setData([...data, {...newRowData, id: generateId()}])
     }
 
     return (
