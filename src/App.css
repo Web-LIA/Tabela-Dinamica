@@ -1,18 +1,57 @@
-.App {
-  text-align: center;
+.navBar{
+  color:white;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  .lateral{
+    padding-top: 100px;
+    height: 100vh;
+    width: 80px;
+    ul{
+      display: grid;
+      align-content: space-around; 
+      height: calc(100vh - 80px - 100px);
+      li{
+        font-size: xx-large;
+        width: 80px;
+      }
+    }
+  }
+  .superior{
+    width: 100vw;
+    height: 80px;
+    align-content: center;
+    ul{
+      display: flex;
+      justify-content: space-between;
+      width: calc(100vw - 80px);
+
+      .logo{
+        width: 80px;
+        height: 80px;
+      } 
+
+    }
+  }
+  ul{
+    list-style-type: none;
+  }
+  li{
+    align-content: center;
+    font-size: xx-large;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    
+  }
+  div{
+    background-color: black;
+    position: fixed;
+    padding: 10px;
+    display: flex;
+  }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
+.rota{
+  padding-top: 100px;
+  padding-left: 100px;
+  background-color: black;
+}  
