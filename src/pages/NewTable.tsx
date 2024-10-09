@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 //import themes from '../components/themes/Table.module.css'
 import TableRow from '../components/newTable/TableRow'
+import FormAddRow from '../components/newTable/FormAddRow'
 
 type RowData = {
     id: string
@@ -36,19 +37,23 @@ function NewTable() {
         })
         setData(newData)
     }
-    function updateNewRowData() {
-
+    function updateNewRowData(e: React.ChangeEvent<HTMLInputElement>) {
+        keys.map(key => {
+            if(key === e.target.id) {
+                setNewRowData({...newRowData, [key]: e.target.value})
+            }
+        })
+    }
+    function addRow(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        setData([...data, newRowData])
     }
 
     return (
         <>
         <button onClick={() => addColumn("teste")}>Adicionar Campo</button>
         <button onClick={() => removeColumn("teste")}>Remover Campo</button>
-        <form>
-            {
-                keys.map(key => <input type="text" placeholder={key}/>)
-            }
-        </form>
+        <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
         <table border={1}>
             <thead>
                 <tr>
