@@ -1,5 +1,5 @@
 import logo from './../assets/logo.png'
-
+import login from './../assets/login.png'
 interface navProps{
     style:string;
     user?:string;
@@ -22,7 +22,7 @@ function NavBar({ style, user }:navProps){
                 <ul>
                     <li><a href="/"><img src={logo} alt="LOGO" className='logo'/></a></li>
                     {/* COLOCAR ABAIXO OS ITENS DA NAVBAR COM TAG li */}
-                    
+                    <li><img src={login} alt="LOGIN" className='login'/></li>
                 </ul>
             </div>    
 
