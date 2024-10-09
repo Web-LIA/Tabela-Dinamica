@@ -9,18 +9,21 @@ type TableHeaderProps = {
 function TableHeader(props: TableHeaderProps) {
     return (
         <thead>
-            { props.editMode && (
+            { props.editMode ? (
                 <tr>
                     {
-                        props.keys.map(key => <th><button onClick={() => props.removeColumn(key)}>X</button></th>)
+                        props.keys.map(key => (
+                            <th key={key}>{key} <button onClick={() => props.removeColumn(key)}>X</button></th>
+                        ))
                     }
-                </tr>  
+                </tr>
+            ) : (
+                <tr>
+                    {
+                        props.keys.map(key => <th key={key}>{key}</th>)
+                    }
+                </tr>
             )}
-            <tr>
-                {
-                    props.keys.map(key => <th key={key}>{key}</th>)
-                }
-            </tr>
         </thead>
     )
 }
