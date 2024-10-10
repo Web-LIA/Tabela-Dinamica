@@ -39,9 +39,16 @@ export type FormAddRowProps = {
     addRow: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
+export type TableHeaderMethods = {
+    removeColumn: (removeKey: string) => void
+    discardChanges: () => void
+    setEditKeyIndex: React.Dispatch<React.SetStateAction<number>>
+    editColumnKey: (editedKeys: string[]) => void
+}
+
 export type TableHeaderProps = {
     keys: string[]
     editMode: boolean
-    removeColumn: (removeKey: string) => void
-    discardChanges: () => void
+    editKeyIndex: number
+    methods: TableHeaderMethods
 }

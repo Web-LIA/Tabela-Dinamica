@@ -6,7 +6,7 @@ import FormAddRow from '../components/newTable/FormAddRow'
 import FormAddColumn from '../components/newTable/FormAddColumn'
 import TableHeader from '../components/newTable/TableHeader'
 import TableRowEdit from '../components/newTable/TableRowEdit'
-import { RowData, TableRowMethods, TableRowEditMethods } from '../typesNewTable'
+import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesNewTable'
 
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
@@ -19,11 +19,13 @@ function NewTable() {
     const [newKey, setNewKey] = useState<string>("")
     const [editMode, setEditMode] = useState<boolean>(false)
     const [editRowId, setEditRowId] = useState<string>("")
+    const [editKeyIndex, setEditKeyIndex] = useState<number>(-1)
     const [backupData, setBackupData] = useState<RowData[]>(data)
 
     function changeEditMode() {
         setBackupData(data)
         setEditRowId("")
+        setEditKeyIndex(-1)
         setEditMode(!editMode)
     }
     function discardChanges() {
@@ -33,6 +35,8 @@ function NewTable() {
         const backupNewRowData: RowData = {id: ""}
         backupKeys.forEach(key => {backupNewRowData[key] = ""})
         setNewRowData(backupNewRowData)
+        setEditRowId("")
+        setEditKeyIndex(-1)
     }
     function addColumn(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -101,9 +105,20 @@ function NewTable() {
         setData(auxData)
         setEditRowId("")
     }
+    function editColumnKey(editedKeys: string[]) {
+        // mudar tudo baseado nas keys
+        setKeys(editedKeys)
+        setEditKeyIndex(-1)
+    }
 
     const tableRowMethods: TableRowMethods = {removeRow: removeRow, setEditRowId: setEditRowId}
     const tableRowEditMethods: TableRowEditMethods = {removeRow: removeRow, editRow: editRow}
+    const tableHeaderMethods: TableHeaderMethods = {
+        removeColumn: removeColumn,
+        discardChanges: discardChanges,
+        setEditKeyIndex: setEditKeyIndex,
+        editColumnKey: editColumnKey
+    }
 
     return (
         <>
@@ -116,7 +131,7 @@ function NewTable() {
         )}
         <div className={themes.tabela}>
         <table border={1}>
-            <TableHeader keys={keys} editMode={editMode} removeColumn={removeColumn} discardChanges={discardChanges}/>
+            <TableHeader keys={keys} editMode={editMode} editKeyIndex={editKeyIndex} methods={tableHeaderMethods}/>
             <tbody>
                 {
                     data.map(rowData =>
