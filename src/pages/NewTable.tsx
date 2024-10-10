@@ -99,6 +99,11 @@ function NewTable() {
         const id = editedRowData.id
         auxData.forEach((rowData, index) => {
             if(rowData['id'] === id) {
+                keys.forEach(key => {
+                    if(editedRowData[key] === "") {
+                        editedRowData[key] = auxData[index][key]
+                    }
+                })
                 auxData[index] = editedRowData
             }
         })
