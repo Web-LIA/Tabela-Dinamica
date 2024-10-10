@@ -20,17 +20,19 @@ function NewTable() {
     const [editMode, setEditMode] = useState<boolean>(false)
     const [editRowId, setEditRowId] = useState<string>("")
     const [backupData, setBackupData] = useState<RowData[]>(data)
-    const [backupKeys, setBackupKeys] = useState<string[]>(keys)
 
     function changeEditMode() {
         setBackupData(data)
-        setBackupKeys(keys)
         setEditRowId("")
         setEditMode(!editMode)
     }
     function discardChanges() {
+        const backupKeys = Object.keys(backupData[0])
         setData(backupData)
         setKeys(backupKeys)
+        const backupNewRowData: RowData = {id: ""}
+        backupKeys.forEach(key => {backupNewRowData[key] = ""})
+        setNewRowData(backupNewRowData)
     }
     function addColumn(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -42,15 +44,21 @@ function NewTable() {
         setData(newData)
     }
     function removeColumn(removeKey: string) {
-        setKeys(keys.filter(key => (key !== removeKey)))
-        let aux: RowData = newRowData
-        delete aux[removeKey]
+        let newKeys = keys.filter(key => (key !== removeKey))
+        setKeys(newKeys)
+        let aux: RowData = {id: newRowData.id}
+        newKeys.forEach(key => aux[key] = newRowData[key])
+        // let aux: RowData = newRowData
+        // delete aux[removeKey]
         setNewRowData(aux)
         let newData: RowData[] = data
-        newData.forEach(rowData => {
-            delete rowData[removeKey]
+        newData.forEach((rowData, index) => {
+            // delete rowData[removeKey]
+            let {removeKey, ...aux} = rowData
+            newData[index] = aux
         })
         setData(newData)
+        // o delete tava bugando o backup, resolvi na gambiarra
     }
     function updateNewRowData(e: React.ChangeEvent<HTMLInputElement>) {
         keys.map(key => {
