@@ -11,6 +11,10 @@ function TableHeader(props: TableHeaderProps) {
         props.methods.editColumnKey(aux)
         setEditedKey("")
     }
+    function changeInputColumn(index: number) {
+        props.methods.setEditKeyIndex(index)
+        props.methods.setEditRowId("")
+    }
 
     return (
         <thead>
@@ -28,7 +32,7 @@ function TableHeader(props: TableHeaderProps) {
                         ) : (
                             <th key={key}>
                                 {key}
-                                <button onClick={() => props.methods.setEditKeyIndex(index + 1)}>Editar</button>
+                                <button onClick={() => changeInputColumn(index + 1)}>Editar</button>
                                 <button onClick={() => props.methods.removeColumn(key)}>X</button>
                             </th>
                         )}

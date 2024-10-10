@@ -3,6 +3,12 @@ import { RowData, TableRowMethods, TableRowProps } from "../../typesNewTable"
 
 function TableRow(props: TableRowProps) {
     const rowData = props.rowData
+
+    function changeInputRow(id: string) {
+        props.methods.setEditRowId(id)
+        props.methods.setEditKeyIndex(-1)
+    }
+
     return (
         <tr>
             {
@@ -11,7 +17,7 @@ function TableRow(props: TableRowProps) {
             { props.editMode && (
                 <>
                 <td>
-                    <button onClick={() => props.methods.setEditRowId(rowData.id)}>Editar</button>
+                    <button onClick={() => changeInputRow(rowData.id)}>Editar</button>
                 </td>
                 <td>
                     <button onClick={() => props.methods.removeRow(rowData.id)}>X</button>

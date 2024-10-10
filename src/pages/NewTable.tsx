@@ -107,17 +107,25 @@ function NewTable() {
     }
     function editColumnKey(editedKeys: string[]) {
         // mudar tudo baseado nas keys
-        setKeys(editedKeys)
+        //setKeys(editedKeys)
         setEditKeyIndex(-1)
     }
 
-    const tableRowMethods: TableRowMethods = {removeRow: removeRow, setEditRowId: setEditRowId}
-    const tableRowEditMethods: TableRowEditMethods = {removeRow: removeRow, editRow: editRow}
+    const tableRowMethods: TableRowMethods = {
+        removeRow: removeRow,
+        setEditRowId: setEditRowId,
+        setEditKeyIndex: setEditKeyIndex
+    }
+    const tableRowEditMethods: TableRowEditMethods = {
+        removeRow: removeRow,
+        editRow: editRow
+    }
     const tableHeaderMethods: TableHeaderMethods = {
         removeColumn: removeColumn,
         discardChanges: discardChanges,
         setEditKeyIndex: setEditKeyIndex,
-        editColumnKey: editColumnKey
+        editColumnKey: editColumnKey,
+        setEditRowId: setEditRowId
     }
 
     return (

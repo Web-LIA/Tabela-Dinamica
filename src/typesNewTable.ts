@@ -6,6 +6,7 @@ export type RowData = {
 export type TableRowMethods = {
     removeRow: (id: string) => void
     setEditRowId: React.Dispatch<React.SetStateAction<string>>
+    setEditKeyIndex: React.Dispatch<React.SetStateAction<number>>
 }
 
 export type TableRowProps = {
@@ -44,6 +45,7 @@ export type TableHeaderMethods = {
     discardChanges: () => void
     setEditKeyIndex: React.Dispatch<React.SetStateAction<number>>
     editColumnKey: (editedKeys: string[]) => void
+    setEditRowId: React.Dispatch<React.SetStateAction<string>>
 }
 
 export type TableHeaderProps = {
