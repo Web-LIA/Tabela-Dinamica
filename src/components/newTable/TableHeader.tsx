@@ -1,5 +1,6 @@
 import React from "react"
 import { TableHeaderProps } from "../../typesNewTable"
+import themes from '../themes/Table.module.css'
 
 function TableHeader(props: TableHeaderProps) {
     return (
@@ -10,7 +11,7 @@ function TableHeader(props: TableHeaderProps) {
                         <>
                        <th key="id">id</th> 
                         {props.keys.filter(key => key !== "id").map(key => (
-                            <th key={key}>{key} <button onClick={() => props.removeColumn(key)}>X</button></th>
+                            <th key={key}>{key} <button onClick={() => props.removeColumn(key)} className={themes.remover}>X</button></th>
                         ))}
                         <th colSpan={2}><button onClick={props.discardChanges}>Descartar Mudanças</button></th>
                         </>

@@ -1,6 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import { RowData, TableRowEditMethods, TableRowEditProps } from "../../typesNewTable"
+import themes from '../themes/Table.module.css'
 
 function TableRowEdit(props: TableRowEditProps) {
     const rowData = props.rowData
@@ -28,7 +29,7 @@ function TableRowEdit(props: TableRowEditProps) {
                 <button onClick={() => props.methods.editRow(editedRowData)}>Enviar</button>
             </td>
             <td>
-                <button onClick={() => props.methods.removeRow(rowData.id)}>X</button>
+                <button onClick={() => props.methods.removeRow(rowData.id)} className={themes.remover}>X</button>
             </td>
         </tr>
     )
