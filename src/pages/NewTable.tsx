@@ -108,8 +108,11 @@ function NewTable() {
     function editColumnKey(editedKeys: string[]) {
         const oldKey = keys[editKeyIndex]
         const editedKey = editedKeys[editKeyIndex]
-        let editedNewRowData: RowData = {id: ""}
-        editedKeys.filter(key => key != "id").forEach(key => editedNewRowData[key] = "")
+        let editedNewRowData: RowData = {id: newRowData['id']}
+        editedKeys.filter(key => key != "id").forEach(key => {
+            if(key === editedKey) editedNewRowData[key] = newRowData[oldKey]
+            else editedNewRowData[key] = newRowData[key]
+        })
         let editedData: RowData[] = [...data]
         editedData.forEach((rowData, dataIndex) => {
             let editedRowData: RowData = {id: rowData['id']}
