@@ -133,5 +133,14 @@
                 border-radius: 100%;
             }
         }
+        input{
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            text-align: center;
+            background-color: #dbdbdb;
+            color:black;
+            font-weight: bolder;
+            border: 1px solid black;
+        }
     }
 }
