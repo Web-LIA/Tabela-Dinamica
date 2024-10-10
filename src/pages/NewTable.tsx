@@ -106,8 +106,25 @@ function NewTable() {
         setEditRowId("")
     }
     function editColumnKey(editedKeys: string[]) {
-        // mudar tudo baseado nas keys
-        //setKeys(editedKeys)
+        const oldKey = keys[editKeyIndex]
+        const editedKey = editedKeys[editKeyIndex]
+        let editedNewRowData: RowData = {id: ""}
+        editedKeys.filter(key => key != "id").forEach(key => editedNewRowData[key] = "")
+        let editedData: RowData[] = [...data]
+        editedData.forEach((rowData, dataIndex) => {
+            let editedRowData: RowData = {id: rowData['id']}
+            editedKeys.filter(key => key!="id").forEach(key => {
+                if (key === editedKey) {
+                    editedRowData[key] = data[dataIndex][oldKey]
+                } else {
+                    editedRowData[key] = data[dataIndex][key]
+                }
+                editedData[dataIndex] = editedRowData
+            })
+        })
+        setNewRowData(editedNewRowData)
+        setData(editedData)
+        setKeys(editedKeys)
         setEditKeyIndex(-1)
     }
 
