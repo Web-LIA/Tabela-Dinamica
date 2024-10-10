@@ -1,6 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import { TableHeaderProps } from "../../typesNewTable"
+import themes from '../themes/Table.module.css'
 
 function TableHeader(props: TableHeaderProps) {
     const [editedKey, setEditedKey] = useState<string>("")
@@ -27,13 +28,17 @@ function TableHeader(props: TableHeaderProps) {
                             <th key={key}>
                                 <input type="text" placeholder={key} onChange={(e) => setEditedKey(e.target.value)}/>
                                 <button onClick={sendEditedKeys}>Enviar</button>
-                                <button onClick={() => props.methods.removeColumn(key)}>X</button>
+                                <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
+                                    X
+                                </button>
                             </th>
                         ) : (
                             <th key={key}>
                                 {key}
                                 <button onClick={() => changeInputColumn(index + 1)}>Editar</button>
-                                <button onClick={() => props.methods.removeColumn(key)}>X</button>
+                                <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
+                                    X
+                                </button>
                             </th>
                         )}
                         </>
