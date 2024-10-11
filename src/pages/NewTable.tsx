@@ -7,6 +7,7 @@ import FormAddColumn from '../components/newTable/FormAddColumn'
 import TableHeader from '../components/newTable/TableHeader'
 import TableRowEdit from '../components/newTable/TableRowEdit'
 import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesNewTable'
+import DownloadButton from '../components/newTable/DownloadButton'
 
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
@@ -180,6 +181,7 @@ function NewTable() {
             </tbody>
         </table>
         </div>
+        <DownloadButton tableData={data} fileName="tabela.csv"/>
         </>
     )
 }
