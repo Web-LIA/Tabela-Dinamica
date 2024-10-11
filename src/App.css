@@ -32,6 +32,9 @@
       li:hover{
         background-color: #005092;
       }
+      .atual{
+        background-color: rgba(30,0,86,1);
+      }
     }
   }
   .superior{
