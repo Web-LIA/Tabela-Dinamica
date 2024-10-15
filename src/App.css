@@ -5,6 +5,7 @@
     padding-top: 100px;
     height: 100vh;
     width: 80px;
+    z-index: 1;
     ul{
       display: grid;
       align-content: space-around; 
@@ -19,6 +20,7 @@
     width: 100vw;
     height: 80px;
     align-content: center;
+    z-index: 1;
     ul{
       display: flex;
       justify-content: space-between;
