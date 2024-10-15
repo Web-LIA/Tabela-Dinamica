@@ -159,8 +159,10 @@ function NewTable() {
         <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
         { editMode && (
             <>
-            <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
-            <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+            <div className={themes.formulario}>
+                <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
+                <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+            </div>
             </>
         )}
         <div className={themes.tabela}>

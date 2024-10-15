@@ -182,5 +182,40 @@
 }
 
 .formulario{
+    background-color: #252525;
+    position: fixed;
+    display: grid;
+    justify-content: center;
+    padding: 10px;
+    z-index: 1;
+    max-width: calc(100% - 100px - 10% - 100px) ;
+    max-height: 50%;
+    overflow-y: scroll;
+    bottom:25%;
+    left: calc(100px + 5px);
+    form{
+        display: grid;
+        justify-self: center;
+        &:first-child{
+            padding-top:10px;
+            padding-bottom: 5%;
+        }
+        input,button{
+            padding: 5px;
+            margin-bottom: 3px;
+        }
+        button{
+            background-color: rgb(31, 32, 78);
+            cursor:pointer;
+            font-size: medium;
+            font-weight: bolder;
+            color: white;
+        }
+        input{
+            background-color: rgb(255, 255, 255);
+            text-align: center;
+            font-weight: bolder;
+        }
+    }
 
 }
