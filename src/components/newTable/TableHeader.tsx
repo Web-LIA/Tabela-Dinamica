@@ -27,23 +27,25 @@ function TableHeader(props: TableHeaderProps) {
                         <>
                         { (props.editKeyIndex === index + 1) ? (
                             <th key={key}>
-                                <input type="text" placeholder={key} onChange={(e) => setEditedKey(e.target.value)}/>
                                 <div>
                                     <button onClick={sendEditedKeys}>Enviar</button>
                                     <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
                                         X
                                     </button>
                                 </div>
+                                <input type="text" placeholder={key} onChange={(e) => setEditedKey(e.target.value)}/>
+                                
                             </th>
                         ) : (
                             <th key={key}>
-                                {key}
-                                <div>
+                                 <div>
                                     <button onClick={() => changeInputColumn(index + 1)} className={themes.editar}><img src={editarImg} alt="Editar" /> </button>
                                     <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
                                         X
                                     </button>
                                 </div>
+                                {key}
+                               
                             </th>
                         )}
                         </>
