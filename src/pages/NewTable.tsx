@@ -7,6 +7,7 @@ import FormAddColumn from '../components/newTable/FormAddColumn'
 import TableHeader from '../components/newTable/TableHeader'
 import TableRowEdit from '../components/newTable/TableRowEdit'
 import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesNewTable'
+import editIcon from '../assets/editIcon.svg'
 
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
@@ -155,7 +156,7 @@ function NewTable() {
 
     return (
         <>
-        <button onClick={changeEditMode}>Editar</button>
+        <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
         { editMode && (
             <>
             <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
