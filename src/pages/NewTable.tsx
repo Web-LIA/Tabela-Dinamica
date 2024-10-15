@@ -156,12 +156,14 @@ function NewTable() {
 
     return (
         <>
-        <button onClick={changeEditMode}>Editar</button>
-        { editMode && (
+        {editMode ? (
             <>
+            <button onClick={changeEditMode}>Enviar</button>
             <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
             <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
             </>
+        ): (
+            <button onClick={changeEditMode}>Editar</button>
         )}
         <div className={themes.tabela}>
         <table border={1}>
