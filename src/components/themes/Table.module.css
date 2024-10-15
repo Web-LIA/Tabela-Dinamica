@@ -23,10 +23,25 @@
             text-align: center;
             text-transform: uppercase;
             font-size: x-large;
+           
             th {
+                
                 background-color: #333;
                 color: #fff;
                 padding:5px;
+                div{
+                    display: flex;
+                    justify-content: right;
+                    
+                }
+                input{
+                    background-color: #928e8e;
+                    height: 100%;
+                    width: 100%;
+                    padding: 5px 0 ;
+                    text-transform: uppercase;
+                }
+
             }
             button{
 
@@ -43,10 +58,6 @@
             text-align: center;
             font-size: large;
         }
-        td{
-            border: 1px solid black;
-            min-width: 200px;
-        }
         tr{
             border: 1px solid black;
             padding:5px;
@@ -57,6 +68,10 @@
             &:hover {
                 background-color: #ccc;
             }
+        }
+        td{
+            border: 1px solid black;
+            min-width: 200px;
         }
         button{
             cursor: pointer;
@@ -119,6 +134,10 @@
             }
         }
         .editar{
+            width: 27px;
+            height: 27px;
+            position:relative;
+            align-self: center;
             background-color: transparent;
             color:white;
             text-transform: uppercase;
@@ -137,8 +156,8 @@
             width: calc(100% - 2px);
             height: calc(100% - 2px);
             text-align: center;
-            background-color: #dbdbdb;
-            color:black;
+            background-color: #a5c0fa;
+            color: black;
             font-weight: bolder;
             border: 1px solid black;
         }

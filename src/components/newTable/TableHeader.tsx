@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { TableHeaderProps } from "../../typesNewTable"
 import themes from '../themes/Table.module.css'
+import editarImg from '../../assets/home/Edit.png'
 
 function TableHeader(props: TableHeaderProps) {
     const [editedKey, setEditedKey] = useState<string>("")
@@ -27,18 +28,22 @@ function TableHeader(props: TableHeaderProps) {
                         { (props.editKeyIndex === index + 1) ? (
                             <th key={key}>
                                 <input type="text" placeholder={key} onChange={(e) => setEditedKey(e.target.value)}/>
-                                <button onClick={sendEditedKeys}>Enviar</button>
-                                <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
-                                    X
-                                </button>
+                                <div>
+                                    <button onClick={sendEditedKeys}>Enviar</button>
+                                    <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
+                                        X
+                                    </button>
+                                </div>
                             </th>
                         ) : (
                             <th key={key}>
                                 {key}
-                                <button onClick={() => changeInputColumn(index + 1)}>Editar</button>
-                                <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
-                                    X
-                                </button>
+                                <div>
+                                    <button onClick={() => changeInputColumn(index + 1)} className={themes.editar}><img src={editarImg} alt="Editar" /> </button>
+                                    <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
+                                        X
+                                    </button>
+                                </div>
                             </th>
                         )}
                         </>
