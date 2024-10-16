@@ -1,24 +1,32 @@
-import React from "react";
-import { Row, TableRowProps } from "../../types";
-
+import React from "react"
+import { RowData, TableRowMethods, TableRowProps } from "../../typesTable"
+import themes from '../themes/Table.module.css'
+import editarImg from '../../assets/home/Edit.png'
 function TableRow(props: TableRowProps) {
-    const row = props.row
-    type tableCell = keyof typeof row; 
-    const keys: tableCell[] = Object.keys(row).filter((key): key is keyof Row => key in row);
-    
+    const rowData = props.rowData
+
+    function changeInputRow(id: string) {
+        props.methods.setEditRowId(id)
+        props.methods.setEditKeyIndex(-1)
+    }
+
     return (
-        <tr key={row.id}>
+        <tr>
             {
-                keys.map( key => <td key={key}>{row[key]}</td>)
+                props.keys.map( key => <td key={key}>{rowData[key]}</td>)
             }
-            <td>
-                <button name={row.id+""} onClick={props.rowMethods.editRow}>Editar</button>
-            </td>
-            <td>
-                <button name={row.id+""} onClick={props.rowMethods.removeRow}>X</button>
-            </td>
+            { props.editMode && (
+                <>
+                <td>
+                    <button onClick={() => changeInputRow(rowData.id)} className={themes.editar}> <img src={editarImg} alt="Editar" /> </button>
+                </td>
+                <td>
+                    <button onClick={() => props.methods.removeRow(rowData.id)} className={themes.remover}>X</button>
+                </td>
+                </>
+            )}
         </tr>
     )
 }
 
-export default TableRow;
+export default TableRow

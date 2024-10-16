@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css';
 import NavBar from './components/navBar'
-import Table from './pages/Table'
 import Home from './pages/Home'
+import Table from './pages/Table'
 
 function App() {
   return (
