@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className = 'navBar'>
-        <NavBar  style = "navBar"/>
+        <NavBar/>
       </div>
       <div className='rota'>
         <Routes>
