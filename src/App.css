@@ -2,9 +2,11 @@
   color:white;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   .lateral{
+    -webkit-backface-visibility: hidden;
     padding-top: 100px;
     height: 100vh;
     width: 80px;
+    z-index: 1;
     ul{
       display: grid;
       align-content: space-around; 
@@ -15,10 +17,13 @@
       }
     }
   }
+  
   .superior{
+    -webkit-backface-visibility: hidden;
     width: 100vw;
     height: 80px;
     align-content: center;
+    z-index: 1;
     ul{
       display: flex;
       justify-content: space-between;

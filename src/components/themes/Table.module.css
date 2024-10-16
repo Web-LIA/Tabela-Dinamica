@@ -23,10 +23,25 @@
             text-align: center;
             text-transform: uppercase;
             font-size: x-large;
+           
             th {
+                
                 background-color: #333;
                 color: #fff;
                 padding:5px;
+                div{
+                    display: flex;
+                    justify-content: right;
+                    
+                }
+                input{
+                    background-color: #928e8e;
+                    height: 100%;
+                    width: 100%;
+                    padding: 5px 0 ;
+                    text-transform: uppercase;
+                }
+
             }
             button{
 
@@ -43,10 +58,6 @@
             text-align: center;
             font-size: large;
         }
-        td{
-            border: 1px solid black;
-            min-width: 200px;
-        }
         tr{
             border: 1px solid black;
             padding:5px;
@@ -57,6 +68,10 @@
             &:hover {
                 background-color: #ccc;
             }
+        }
+        td{
+            border: 1px solid black;
+            min-width: 200px;
         }
         button{
             cursor: pointer;
@@ -118,8 +133,12 @@
                 }
             }
         }
-        .editar{
-            background-color: transparent;
+        .enviar,.editar{
+            width: 27px;
+            height: 27px;
+            position:relative;
+            align-self: center;
+            
             color:white;
             text-transform: uppercase;
             font-weight: bold;
@@ -133,14 +152,81 @@
                 border-radius: 100%;
             }
         }
+        .editar{
+            background-color: transparent;
+        }
+        .enviar{
+            background-color: darkgreen;
+        }
         input{
             width: calc(100% - 2px);
             height: calc(100% - 2px);
             text-align: center;
-            background-color: #dbdbdb;
-            color:black;
+            background-color: #a5c0fa;
+            color: black;
             font-weight: bolder;
             border: 1px solid black;
+            overflow-x: scroll;
         }
     }
+}
+
+.editarButton{
+    -webkit-backface-visibility: hidden;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    background: rgb(2,0,11);
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    img{
+        border-radius: 100%;
+        width: 100px;
+        height: 100px;
+    }
+    div{
+        position: absolute;
+    }
+}
+
+.formulario{
+    -webkit-backface-visibility: hidden;
+    background-color: #252525;
+    position: fixed;
+    display: grid;
+    justify-content: center;
+    padding: 10px;
+    z-index: 1;
+    max-width: calc(100% - 100px - 10% - 100px) ;
+    max-height: 50%;
+    overflow-y: scroll;
+    bottom:25%;
+    left: calc(100px + 3%);
+    form{
+        display: grid;
+        justify-self: center;
+        &:first-child{
+            padding-top:10px;
+            padding-bottom: 5%;
+        }
+        input,button{
+            padding: 5px;
+            margin-bottom: 3px;
+        }
+        button{
+            background-color: rgb(31, 32, 78);
+            cursor:pointer;
+            font-size: medium;
+            font-weight: bolder;
+            color: white;
+        }
+        input{
+            background-color: rgb(255, 255, 255);
+            text-align: center;
+            font-weight: bolder;
+            overflow-x: scroll;
+        }
+    }
+
 }

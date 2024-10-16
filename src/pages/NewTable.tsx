@@ -9,6 +9,8 @@ import TableRowEdit from '../components/newTable/TableRowEdit'
 import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesNewTable'
 import DownloadButton from '../components/newTable/DownloadButton'
 
+import editIcon from '../assets/editIcon.svg'
+import checkIcon from '../assets/checkIcon.svg'
 function NewTable() {
     const [data, setData] = useState<RowData[]>([
         {id: "00000", nome: "Ryan", idade: "20"},
@@ -167,12 +169,14 @@ function NewTable() {
         <>
         {editMode ? (
             <>
-            <button onClick={changeEditMode}>Enviar</button>
-            <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
-            <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+            <button onClick={changeEditMode} className={themes.editarButton}><img src={checkIcon} alt="Salvar Mudanças" /><div></div></button>
+            <div className={themes.formulario}>
+                <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
+                <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+            </div>
             </>
         ): (
-            <button onClick={changeEditMode}>Editar</button>
+            <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
         )}
         <div className={themes.tabela}>
         <table border={1}>

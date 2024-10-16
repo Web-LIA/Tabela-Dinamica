@@ -2,7 +2,8 @@ import React from "react"
 import { useState } from "react"
 import { TableHeaderProps } from "../../typesNewTable"
 import themes from '../themes/Table.module.css'
-
+import editarImg from '../../assets/home/Edit.png'
+import checkImg from '../../assets/checkIcon.svg'
 function TableHeader(props: TableHeaderProps) {
     const [editedKey, setEditedKey] = useState<string>("")
 
@@ -26,19 +27,25 @@ function TableHeader(props: TableHeaderProps) {
                         <>
                         { (props.editKeyIndex === index + 1) ? (
                             <th key={key}>
+                                <div>
+                                    <button onClick={sendEditedKeys} className={themes.enviar}><img src={checkImg} alt="Enviar" /> </button>
+                                    <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
+                                        X
+                                    </button>
+                                </div>
                                 <input type="text" placeholder={key} onChange={(e) => setEditedKey(e.target.value)}/>
-                                <button onClick={sendEditedKeys}>Enviar</button>
-                                <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
-                                    X
-                                </button>
+                                
                             </th>
                         ) : (
                             <th key={key}>
+                                 <div>
+                                    <button onClick={() => changeInputColumn(index + 1)} className={themes.editar}><img src={editarImg} alt="Editar" /> </button>
+                                    <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
+                                        X
+                                    </button>
+                                </div>
                                 {key}
-                                <button onClick={() => changeInputColumn(index + 1)}>Editar</button>
-                                <button onClick={() => props.methods.removeColumn(key)} className={themes.remover}>
-                                    X
-                                </button>
+                               
                             </th>
                         )}
                         </>
