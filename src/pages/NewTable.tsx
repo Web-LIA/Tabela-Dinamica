@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import themes from '../components/themes/Table.module.css'
 import TableRow from '../components/newTable/TableRow'
 import FormAddRow from '../components/newTable/FormAddRow'
@@ -22,6 +22,7 @@ function NewTable() {
     const [editRowId, setEditRowId] = useState<string>("")
     const [editKeyIndex, setEditKeyIndex] = useState<number>(-1)
     const [backupData, setBackupData] = useState<RowData[]>(data)
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     function changeEditMode() {
         setBackupData(data)
@@ -41,12 +42,20 @@ function NewTable() {
     }
     function addColumn(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        setKeys([...keys, newKey])
-        setNewRowData({...newRowData, [newKey]: ""})
-        const newData: RowData[] = data.map(rowData => (
-            {...rowData, [newKey]: ""}
-        ))
-        setData(newData)
+        const upperKeys = keys.map(key => key.toUpperCase())
+        const upperNewKey = newKey.toUpperCase()
+        if(upperKeys.includes(upperNewKey)){
+            inputRef.current?.setCustomValidity('Esse nome já existe!')
+            inputRef.current?.reportValidity()
+        } else {
+            inputRef.current?.setCustomValidity('')
+            setKeys([...keys, newKey])
+            setNewRowData({...newRowData, [newKey]: ""})
+            const newData: RowData[] = data.map(rowData => (
+                {...rowData, [newKey]: ""}
+            ))
+            setData(newData)
+        }
     }
     function removeColumn(removeKey: string) {
         let newKeys = keys.filter(key => (key !== removeKey))
@@ -159,7 +168,7 @@ function NewTable() {
         {editMode ? (
             <>
             <button onClick={changeEditMode}>Enviar</button>
-            <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn}/>
+            <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
             <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
             </>
         ): (

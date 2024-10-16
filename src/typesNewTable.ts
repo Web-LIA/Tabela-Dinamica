@@ -31,6 +31,7 @@ export type FormAddColumnProps = {
     keys: string[]
     setNewKey: React.Dispatch<React.SetStateAction<string>>
     addColumn: (e: React.FormEvent<HTMLFormElement>) => void
+    inputRef: React.MutableRefObject<HTMLInputElement | null>
 }
 
 export type FormAddRowProps = {
