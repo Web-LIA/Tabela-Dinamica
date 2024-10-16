@@ -3,3 +3,9 @@
   padding-left: 100px;
   background-color: black;
 }  
+
+@media screen and (max-width: 600px){
+  .rota{
+    padding-left: 0px;
+  }
+}
