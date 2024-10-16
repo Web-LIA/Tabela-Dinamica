@@ -1,4 +1,5 @@
 import logo from './../assets/logo.png'
+import NavPage from './navPage';
 
 interface navProps{
     style:string;
@@ -11,18 +12,15 @@ function NavBar({ style, user }:navProps){
         <header className={style}>
             <div className="lateral">
                 <ul>
-                    {/* COLOCAR ABAIXO OS ITENS DA NAVBAR COM TAG li */}
-                    <li><a href='/'>home</a></li> 
-                    <li><a href='/tabela'>tabela</a></li>
-                    {/* botei uma tag a so pra testar */}
+                    <NavPage rota="/" pagina="home"/> 
+                    <NavPage rota="/tabela" pagina="tabela"/> 
                 </ul>
             </div>
 
             <div className="superior">
                 <ul>
                     <li><a href="/"><img src={logo} alt="LOGO" className='logo'/></a></li>
-                    {/* COLOCAR ABAIXO OS ITENS DA NAVBAR COM TAG li */}
-                    
+                    <li><img src={user} alt="LOGIN" className='login'/></li>
                 </ul>
             </div>    
 
