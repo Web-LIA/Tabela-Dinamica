@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useRef } from 'react'
-import themes from '../components/themes/Table.module.css'
+import themes from '../components/themes/table.module.scss'
 import TableRow from '../components/table/TableRow'
 import FormAddRow from '../components/table/FormAddRow'
 import FormAddColumn from '../components/table/FormAddColumn'
