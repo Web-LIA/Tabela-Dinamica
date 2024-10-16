@@ -1,83 +1,204 @@
-import React from 'react';
-import { useState } from 'react';
-import themes from '../components/themes/Table.module.css';
-import TableRow from '../components/table/TableRow';
-import TableRowEdit from '../components/table/TableRowEdit';
-import { Row } from '../types';
+import React from 'react'
+import { useState, useRef } from 'react'
+import themes from '../components/themes/Table.module.css'
+import TableRow from '../components/table/TableRow'
+import FormAddRow from '../components/table/FormAddRow'
+import FormAddColumn from '../components/table/FormAddColumn'
+import TableHeader from '../components/table/TableHeader'
+import TableRowEdit from '../components/table/TableRowEdit'
+import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesTable'
+import DownloadButton from '../components/table/DownloadButton'
 
+import editIcon from '../assets/editIcon.svg'
+import checkIcon from '../assets/checkIcon.svg'
 function Table() {
-    const [data, setData]  = useState<Row[]>([
-        {id: 1, nome:'Ryan', idade:20},
-        {id: 2, nome: 'Ariel', idade: 19},
-        {id: 3, nome: 'Dede', idade: 19}
-
+    const [data, setData] = useState<RowData[]>([
+        {id: "00000", nome: "Ryan", idade: "20"},
+        {id: "00001", nome: "Ariel", idade: "19"},
+        {id: "00002", nome: "Dede", idade: "19"}
     ])
-    const [newData, setNewData] = useState<Row>({id: 0, nome: '', idade: 0})
-    const [editDataId, setEditDataId] = useState<number>(0)
-    const keys: string[] = Object.keys(data[0]);
+    const [newRowData, setNewRowData] = useState<RowData>({id: "", nome: "", idade: ""})
+    const [keys, setKeys] = useState<string[]>(Object.keys(data[0]))
+    const [newKey, setNewKey] = useState<string>("")
+    const [editMode, setEditMode] = useState<boolean>(false)
+    const [editRowId, setEditRowId] = useState<string>("")
+    const [editKeyIndex, setEditKeyIndex] = useState<number>(-1)
+    const [backupData, setBackupData] = useState<RowData[]>(data)
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
-    function updateNewData(e: React.ChangeEvent<HTMLInputElement>) {
-        if (e.target.id === 'id'){
-            setNewData({...newData, id: parseInt(e.target.value)})
+    function changeEditMode() {
+        setBackupData(data)
+        setEditRowId("")
+        setEditKeyIndex(-1)
+        setEditMode(!editMode)
+    }
+    function discardChanges() {
+        const backupKeys = Object.keys(backupData[0])
+        setData(backupData)
+        setKeys(backupKeys)
+        const backupNewRowData: RowData = {id: ""}
+        backupKeys.forEach(key => {backupNewRowData[key] = ""})
+        setNewRowData(backupNewRowData)
+        setEditRowId("")
+        setEditKeyIndex(-1)
+    }
+    function addColumn(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        const upperKeys = keys.map(key => key.toUpperCase())
+        const upperNewKey = newKey.toUpperCase()
+        if(upperKeys.includes(upperNewKey)){
+            inputRef.current?.setCustomValidity('Esse nome já existe!')
+            inputRef.current?.reportValidity()
+        } else {
+            inputRef.current?.setCustomValidity('')
+            setKeys([...keys, newKey])
+            setNewRowData({...newRowData, [newKey]: ""})
+            const newData: RowData[] = data.map(rowData => (
+                {...rowData, [newKey]: ""}
+            ))
+            setData(newData)
         }
-        if (e.target.id === 'nome'){
-            setNewData({...newData, nome: e.target.value})
-        }
-        if (e.target.id === 'idade'){
-            setNewData({...newData, idade: parseInt(e.target.value)})
-        }
+    }
+    function removeColumn(removeKey: string) {
+        let newKeys = keys.filter(key => (key !== removeKey))
+        setKeys(newKeys)
+        let aux: RowData = {id: newRowData.id}
+        newKeys.forEach(key => aux[key] = newRowData[key])
+        // let aux: RowData = newRowData
+        // delete aux[removeKey]
+        setNewRowData(aux)
+        let newData: RowData[] = data
+        newData.forEach((rowData, index) => {
+            // delete rowData[removeKey]
+            let {removeKey, ...aux} = rowData
+            newData[index] = aux
+        })
+        setData(newData)
+        // o delete tava bugando o backup, resolvi na gambiarra
+    }
+    function updateNewRowData(e: React.ChangeEvent<HTMLInputElement>) {
+        keys.map(key => {
+            if(key === e.target.id) {
+                setNewRowData({...newRowData, [key]: e.target.value})
+            }
+        })
+    }
+    function generateId() {
+        let id = ""
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        let index = 0
+        do {
+            id = ""
+            for (let i = 0; i < 5; i++) {
+                index = Math.floor(Math.random() * characters.length);
+                id += characters[index];
+            }
+        } while(data.find(rowData => {return (rowData.id === id)}))
+        return id
     }
     function addRow(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        setData([...data, {id: newData.id, nome: newData.nome, idade:newData.idade}])
+        setData([...data, {...newRowData, id: generateId()}])
     }
-    function removeRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    function removeRow(id: string) {
         let auxData = [...data]
-        auxData = auxData.filter(row => row.id !== parseInt(e.currentTarget.name))
-        // ta quebrando quando apaga todo o array
+        auxData = auxData.filter(rowData => rowData.id !== id)
+        if (auxData.length > 0) setData(auxData)
+        // programa quebra se apagar todo o array
+    }
+    function editRow(editedRowData: RowData) {
+        let auxData = [...data]
+        const id = editedRowData.id
+        auxData.forEach((rowData, index) => {
+            if(rowData['id'] === id) {
+                keys.forEach(key => {
+                    if(editedRowData[key] === "") {
+                        editedRowData[key] = auxData[index][key]
+                    }
+                })
+                auxData[index] = editedRowData
+            }
+        })
         setData(auxData)
+        setEditRowId("")
     }
-    function editRow(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        setEditDataId(parseInt(e.currentTarget.name))
+    function editColumnKey(editedKeys: string[]) {
+        const oldKey = keys[editKeyIndex]
+        const editedKey = editedKeys[editKeyIndex]
+        let editedNewRowData: RowData = {id: newRowData['id']}
+        editedKeys.filter(key => key != "id").forEach(key => {
+            if(key === editedKey) editedNewRowData[key] = newRowData[oldKey]
+            else editedNewRowData[key] = newRowData[key]
+        })
+        let editedData: RowData[] = [...data]
+        editedData.forEach((rowData, dataIndex) => {
+            let editedRowData: RowData = {id: rowData['id']}
+            editedKeys.filter(key => key!="id").forEach(key => {
+                if (key === editedKey) {
+                    editedRowData[key] = data[dataIndex][oldKey]
+                } else {
+                    editedRowData[key] = data[dataIndex][key]
+                }
+                editedData[dataIndex] = editedRowData
+            })
+        })
+        setNewRowData(editedNewRowData)
+        setData(editedData)
+        setKeys(editedKeys)
+        setEditKeyIndex(-1)
     }
-    
-    const rowMethods = {removeRow: removeRow, editRow: editRow}
-    const editRowMethods = {removeRow: removeRow, editRow: editRow, setData: setData, setEditDataId: setEditDataId}
-    
+
+    const tableRowMethods: TableRowMethods = {
+        removeRow: removeRow,
+        setEditRowId: setEditRowId,
+        setEditKeyIndex: setEditKeyIndex
+    }
+    const tableRowEditMethods: TableRowEditMethods = {
+        removeRow: removeRow,
+        editRow: editRow
+    }
+    const tableHeaderMethods: TableHeaderMethods = {
+        removeColumn: removeColumn,
+        discardChanges: discardChanges,
+        setEditKeyIndex: setEditKeyIndex,
+        editColumnKey: editColumnKey,
+        setEditRowId: setEditRowId
+    }
+
     return (
         <>
-        <form onSubmit={addRow} >
-            <input id='id' type='number' placeholder='id' onChange={updateNewData}/>
-            <input id='nome' type='text' placeholder='nome' onChange={updateNewData}/>
-            <input id='idade' type='number' placeholder='idade' onChange={updateNewData}/>
-            <button type='submit'>Adicionar</button>
-        </form>
+        {editMode ? (
+            <>
+            <button onClick={changeEditMode} className={themes.editarButton}><img src={checkIcon} alt="Salvar Mudanças" /><div></div></button>
+            <div className={themes.formulario}>
+                <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
+                <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+            </div>
+            </>
+        ): (
+            <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
+        )}
         <div className={themes.tabela}>
-        <table>
-            <thead>
-                <tr>
-                    {
-                        keys.map(key => <th key={key}>{key}</th>)
-                    }
-                </tr>
-            </thead>
+        <table border={1}>
+            <TableHeader keys={keys} editMode={editMode} editKeyIndex={editKeyIndex} methods={tableHeaderMethods}/>
             <tbody>
                 {
-                    data.map(row =>
+                    data.map(rowData =>
                         <>
-                        {(row.id !== editDataId) ? (
-                            <TableRow row={row} rowMethods={rowMethods}/>
-                        ) :
-                            <TableRowEdit row={row} rowMethods={editRowMethods} data={data}/>
-                        }
+                        { rowData.id !== editRowId ? (
+                            <TableRow rowData={rowData} editMode={editMode} keys={keys} methods={tableRowMethods}/>
+                        ) : (
+                            <TableRowEdit rowData={rowData} keys={keys} methods={tableRowEditMethods}/>
+                        )}
                         </>
                     )
                 }
             </tbody>
         </table>
         </div>
+        <DownloadButton tableData={data} fileName="tabela.csv"/>
         </>
-    )    
+    )
 }
 
-export default Table;
+export default Table

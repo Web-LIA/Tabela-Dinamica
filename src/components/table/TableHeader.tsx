@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { TableHeaderProps } from "../../typesNewTable"
+import { TableHeaderProps } from "../../typesTable"
 import themes from '../themes/Table.module.css'
 import editarImg from '../../assets/home/Edit.png'
 import checkImg from '../../assets/checkIcon.svg'
