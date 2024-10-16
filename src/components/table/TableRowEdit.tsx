@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { RowData, TableRowEditMethods, TableRowEditProps } from "../../typesTable"
+import { RowData, TableRowEditMethods, TableRowEditProps } from "../../types/typesTable"
 import themes from '../themes/table.module.scss'
 import checkIcon from '../../assets/checkIcon.svg'
 

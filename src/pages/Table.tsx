@@ -6,7 +6,7 @@ import FormAddRow from '../components/table/FormAddRow'
 import FormAddColumn from '../components/table/FormAddColumn'
 import TableHeader from '../components/table/TableHeader'
 import TableRowEdit from '../components/table/TableRowEdit'
-import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesTable'
+import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../types/typesTable'
 import DownloadButton from '../components/table/DownloadButton'
 
 import editIcon from '../assets/editIcon.svg'

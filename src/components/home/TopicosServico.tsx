@@ -1,10 +1,6 @@
-interface TopicosProp{
-    imagem:string;
-    titulo:string;
-    texto:string;
-}
+import { ServicosProps } from "../../types/typesHome";
 
-function TopicoServico({imagem, titulo, texto}:TopicosProp){
+function TopicoServico({imagem, titulo, texto}:ServicosProps){
 
     return(
         <li>
