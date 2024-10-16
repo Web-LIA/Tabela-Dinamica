@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/navBar'
 import Table from './pages/Table'
 import Home from './pages/Home'
+import NewTable from './pages/NewTable'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/tabela" element={<Table/>}/>
+          <Route path="/tabelanova" element={<NewTable/>}/>
         </Routes>
       </div>
     </BrowserRouter>
