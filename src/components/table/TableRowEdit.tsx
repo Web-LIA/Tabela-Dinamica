@@ -18,7 +18,9 @@ function TableRowEdit(props: TableRowEditProps) {
 
     return (
         <tr>
-            <td key="id">{rowData.id}</td>
+            { props.idVisibility && (
+                <td key="id">{rowData.id}</td>
+            )}
             {
                 props.keys.filter(key => key !== "id").map( key => (
                     <td key={key}>

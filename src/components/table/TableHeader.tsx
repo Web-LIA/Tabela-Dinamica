@@ -21,8 +21,10 @@ function TableHeader(props: TableHeaderProps) {
     return (
         <thead>
             { props.editMode ? (
-                <tr>    
-                    <th key="id">id</th> 
+                <tr>
+                    {props.idVisibility && (
+                        <th key="id">id</th> 
+                    )}    
                     {props.keys.filter(key => key !== "id").map((key, index) => (
                         <>
                         { (props.editKeyIndex === index + 1) ? (
@@ -53,11 +55,13 @@ function TableHeader(props: TableHeaderProps) {
                     <th colSpan={2}><button onClick={props.methods.discardChanges}>Descartar Mudanças</button></th>
                 </tr>
             ) : (
-                <tr>
-                    {
-                        props.keys.map(key => <th key={key}>{key}</th>)
-                    }
-                </tr>
+                <>
+                { props.idVisibility ? (
+                    props.keys.map(key => <th key={key}>{key}</th>)
+                ) : (
+                    props.keys.filter(key => key !== "id").map( key => <th key={key}>{key}</th>)
+                )}
+                </>
             )}
         </thead>
     )

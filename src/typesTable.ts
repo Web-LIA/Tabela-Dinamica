@@ -13,6 +13,7 @@ export type TableRowProps = {
     rowData: RowData
     keys: string[]
     editMode: boolean
+    idVisibility: boolean
     methods: TableRowMethods
 }
 
@@ -25,6 +26,7 @@ export type TableRowEditProps = {
     rowData: RowData
     keys: string[]
     methods: TableRowEditMethods
+    idVisibility: boolean
 }
 
 export type FormAddColumnProps = {
@@ -52,6 +54,7 @@ export type TableHeaderMethods = {
 export type TableHeaderProps = {
     keys: string[]
     editMode: boolean
+    idVisibility: boolean
     editKeyIndex: number
     methods: TableHeaderMethods
 }

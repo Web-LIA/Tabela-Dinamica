@@ -12,9 +12,11 @@ function TableRow(props: TableRowProps) {
 
     return (
         <tr>
-            {
+            { props.idVisibility ? (
                 props.keys.map( key => <td key={key}>{rowData[key]}</td>)
-            }
+            ) : (
+                props.keys.filter(key => key !== "id").map( key => <td key={key}>{rowData[key]}</td>)
+            )}
             { props.editMode && (
                 <>
                 <td>
