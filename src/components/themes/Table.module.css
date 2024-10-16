@@ -160,11 +160,13 @@
             color: black;
             font-weight: bolder;
             border: 1px solid black;
+            overflow-x: scroll;
         }
     }
 }
 
 .editarButton{
+    -webkit-backface-visibility: hidden;
     position: fixed;
     bottom: 10%;
     right: 5%;
@@ -173,6 +175,7 @@
     cursor: pointer;
     display: flex;
     img{
+        border-radius: 100%;
         width: 100px;
         height: 100px;
     }
@@ -182,6 +185,7 @@
 }
 
 .formulario{
+    -webkit-backface-visibility: hidden;
     background-color: #252525;
     position: fixed;
     display: grid;
@@ -192,7 +196,7 @@
     max-height: 50%;
     overflow-y: scroll;
     bottom:25%;
-    left: calc(100px + 5px);
+    left: calc(100px + 3%);
     form{
         display: grid;
         justify-self: center;
@@ -215,6 +219,7 @@
             background-color: rgb(255, 255, 255);
             text-align: center;
             font-weight: bolder;
+            overflow-x: scroll;
         }
     }
 
