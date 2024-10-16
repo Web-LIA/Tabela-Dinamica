@@ -1,4 +1,4 @@
-import styles from './themes/navbar.module.scss'
+import styles from '../themes/navbar.module.scss'
 import { useLocation } from 'react-router-dom'
 
 interface PageProps {

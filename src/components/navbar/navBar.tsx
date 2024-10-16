@@ -1,7 +1,7 @@
-import styles from './themes/navbar.module.scss'
-import logo from './../assets/logo.png'
+import styles from '../themes/navbar.module.scss'
+import logo from '../../assets/logo.png'
 import NavPage from './navPage';
-import loginImg from '../assets/login.png' ;
+import loginImg from '../../assets/login.png' ;
 interface navProps{
     user?:string;
 }
