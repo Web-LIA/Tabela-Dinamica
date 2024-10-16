@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { RowData, TableRowEditMethods, TableRowEditProps } from "../../typesNewTable"
 import themes from '../themes/Table.module.css'
+import checkIcon from '../../assets/checkIcon.svg'
 
 function TableRowEdit(props: TableRowEditProps) {
     const rowData = props.rowData
@@ -26,7 +27,7 @@ function TableRowEdit(props: TableRowEditProps) {
                 ))
             }
             <td>
-                <button onClick={() => props.methods.editRow(editedRowData)}>Enviar</button>
+                <button onClick={() => props.methods.editRow(editedRowData)} className={themes.enviar}> <img src={checkIcon} alt="Enviar" /></button>
             </td>
             <td>
                 <button onClick={() => props.methods.removeRow(rowData.id)} className={themes.remover}>X</button>
