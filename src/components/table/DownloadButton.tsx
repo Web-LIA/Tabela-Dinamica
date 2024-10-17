@@ -1,6 +1,7 @@
 import React from "react"
-import { RowData } from "../../typesTable"
 import downloadImg from "../../assets/icons/downloadIcon.svg"
+import { RowData } from "../../types/typesTable"
+
 type DownloadButtonProps = {
     tableData: RowData[],
     fileName: string

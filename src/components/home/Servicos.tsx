@@ -1,15 +1,12 @@
 import Topicos from './TopicosServico'
-
+import { TopicosProps } from '../../types/typesHome';
 import somaImage from '../../assets/home/Adicao.png';
 import editImage from '../../assets/home/Edit.png';
 import deleteImage from '../../assets/home/Delete.png';
 
-interface servicosProps{
-    style:string
-}
 
 
-function Servicos({style}:servicosProps){
+function Servicos({style}:TopicosProps){
 
 
     return(
