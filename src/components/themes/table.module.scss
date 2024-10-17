@@ -171,19 +171,19 @@
     }
 }
 
-.editarButton{
+.baixarButton,.editarButton{
     -webkit-backface-visibility: hidden;
     position: fixed;
     bottom: 10%;
-    right: 5%;
+    right: 2.5%;
     background: rgb(2,0,11);
     border-radius: 100%;
     cursor: pointer;
     display: flex;
     img{
         border-radius: 100%;
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
     }
     div{
         position: absolute;
@@ -229,4 +229,8 @@
         }
     }
 
+}
+
+.baixarButton{
+    bottom: calc(10% + 70px);   
 }
