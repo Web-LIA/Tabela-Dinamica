@@ -1,10 +1,7 @@
 import grafico from '../../assets/home/graficos.gif'
+import { TopicosProps } from '../../types/typesHome'
 
-interface sobreProps{
-    style:string
-}
-
-function Sobre({style}:sobreProps){
+function Sobre({style}:TopicosProps){
     return (
         <div className={style}>
             <img src={grafico} alt="Imagem de um gráfico" />
