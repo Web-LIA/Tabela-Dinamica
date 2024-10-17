@@ -1,6 +1,6 @@
 import React from "react"
-import { RowData, TableRowMethods, TableRowProps } from "../../typesTable"
-import themes from '../themes/Table.module.css'
+import { RowData, TableRowMethods, TableRowProps } from "../../types/typesTable"
+import themes from '../themes/table.module.scss'
 import editarImg from '../../assets/home/Edit.png'
 function TableRow(props: TableRowProps) {
     const rowData = props.rowData
@@ -12,9 +12,11 @@ function TableRow(props: TableRowProps) {
 
     return (
         <tr>
-            {
+            { props.idVisibility ? (
                 props.keys.map( key => <td key={key}>{rowData[key]}</td>)
-            }
+            ) : (
+                props.keys.filter(key => key !== "id").map( key => <td key={key}>{rowData[key]}</td>)
+            )}
             { props.editMode && (
                 <>
                 <td>

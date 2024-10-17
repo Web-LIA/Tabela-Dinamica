@@ -1,9 +1,7 @@
 import imagemCapa from '../../assets/home/tabelaCapa.png'
-interface capaProps{
-    style:string
-}
+import { TopicosProps } from '../../types/typesHome'
 
-function Capa({style}:capaProps){
+function Capa({style}:TopicosProps){
     return(
         <div className={style}>
             <div>

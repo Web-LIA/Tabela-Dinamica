@@ -1,4 +1,4 @@
-import styles from '../components/themes/home.module.css'
+import styles from '../components/themes/home.module.scss'
 
 import Capa from '../components/home/Capa'
 import Sobre from '../components/home/Sobre'

@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState, useRef } from 'react'
-import themes from '../components/themes/Table.module.css'
+import themes from '../components/themes/table.module.scss'
 import TableRow from '../components/table/TableRow'
 import FormAddRow from '../components/table/FormAddRow'
 import FormAddColumn from '../components/table/FormAddColumn'
 import TableHeader from '../components/table/TableHeader'
 import TableRowEdit from '../components/table/TableRowEdit'
-import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesTable'
+import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../types/typesTable'
 import DownloadButton from '../components/table/DownloadButton'
 
 import editIcon from '../assets/editIcon.svg'
@@ -24,6 +24,7 @@ function Table() {
     const [editRowId, setEditRowId] = useState<string>("")
     const [editKeyIndex, setEditKeyIndex] = useState<number>(-1)
     const [backupData, setBackupData] = useState<RowData[]>(data)
+    const [idVisibility, setIdVisibility] = useState<boolean>(true)
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     function changeEditMode() {
@@ -173,6 +174,7 @@ function Table() {
             <div className={themes.formulario}>
                 <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
                 <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+                <button onClick={() => setIdVisibility(!idVisibility)}>Ocultar Id</button>
             </div>
             </>
         ): (
@@ -180,15 +182,31 @@ function Table() {
         )}
         <div className={themes.tabela}>
         <table border={1}>
-            <TableHeader keys={keys} editMode={editMode} editKeyIndex={editKeyIndex} methods={tableHeaderMethods}/>
+            <TableHeader 
+                keys={keys} 
+                editMode={editMode} 
+                idVisibility={idVisibility} 
+                editKeyIndex={editKeyIndex} 
+                methods={tableHeaderMethods}
+            />
             <tbody>
                 {
                     data.map(rowData =>
                         <>
                         { rowData.id !== editRowId ? (
-                            <TableRow rowData={rowData} editMode={editMode} keys={keys} methods={tableRowMethods}/>
+                            <TableRow 
+                                rowData={rowData} 
+                                editMode={editMode} 
+                                idVisibility={idVisibility} 
+                                keys={keys} 
+                                methods={tableRowMethods}/>
                         ) : (
-                            <TableRowEdit rowData={rowData} keys={keys} methods={tableRowEditMethods}/>
+                            <TableRowEdit 
+                                rowData={rowData} 
+                                keys={keys} 
+                                methods={tableRowEditMethods} 
+                                idVisibility={idVisibility}
+                            />
                         )}
                         </>
                     )

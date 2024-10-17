@@ -1,5 +1,5 @@
 import React from "react"
-import { RowData } from "../../typesTable"
+import { RowData } from "../../types/typesTable"
 
 type DownloadButtonProps = {
     tableData: RowData[],

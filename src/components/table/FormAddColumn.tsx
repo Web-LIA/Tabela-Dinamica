@@ -1,5 +1,5 @@
 import React from "react"
-import { FormAddColumnProps } from "../../typesTable"
+import { FormAddColumnProps } from "../../types/typesTable"
 
 function FormAddColumn(props: FormAddColumnProps) {
     //adcionar tratamento de erros futuramente

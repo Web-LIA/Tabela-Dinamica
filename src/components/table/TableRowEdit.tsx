@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
-import { RowData, TableRowEditMethods, TableRowEditProps } from "../../typesTable"
-import themes from '../themes/Table.module.css'
+import { RowData, TableRowEditMethods, TableRowEditProps } from "../../types/typesTable"
+import themes from '../themes/table.module.scss'
 import checkIcon from '../../assets/checkIcon.svg'
 
 function TableRowEdit(props: TableRowEditProps) {
@@ -18,7 +18,9 @@ function TableRowEdit(props: TableRowEditProps) {
 
     return (
         <tr>
-            <td key="id">{rowData.id}</td>
+            { props.idVisibility && (
+                <td key="id">{rowData.id}</td>
+            )}
             {
                 props.keys.filter(key => key !== "id").map( key => (
                     <td key={key}>

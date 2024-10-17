@@ -1,5 +1,5 @@
 import React from "react"
-import { RowData, FormAddRowProps } from "../../typesTable"
+import { RowData, FormAddRowProps } from "../../types/typesTable"
 
 function FormAddRow(props: FormAddRowProps) {
     //adcionar tratamento de erros futuramente
