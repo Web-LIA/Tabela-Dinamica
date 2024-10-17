@@ -26,6 +26,7 @@ function Table() {
     const [backupData, setBackupData] = useState<RowData[]>(data)
     const [idVisibility, setIdVisibility] = useState<boolean>(true)
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const [showForm, setShowForm] = useState<boolean>(true);
 
     function changeEditMode() {
         setBackupData(data)
@@ -165,17 +166,29 @@ function Table() {
         editColumnKey: editColumnKey,
         setEditRowId: setEditRowId
     }
-
+    
+    
     return (
         <>
         {editMode ? (
             <>
             <button onClick={changeEditMode} className={themes.editarButton}><img src={checkIcon} alt="Salvar Mudanças" /><div></div></button>
-            <div className={themes.formulario}>
-                <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
-                <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
-                <button onClick={() => setIdVisibility(!idVisibility)}>Ocultar Id</button>
-            </div>
+           
+            {showForm ? (
+                <>
+                <button onClick={()=> setShowForm(!showForm)}>Ocultar formulario</button>
+                <div className={themes.formulario}>
+                    <button onClick={() => setIdVisibility(!idVisibility)}>Ocultar Id</button>
+                    <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
+                    <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+                </div>
+                </>
+            ):(
+                <>
+                <button onClick={()=> setShowForm(!showForm)}>Mostrar formulario</button>
+                </>
+            )}
+                
             </>
         ): (
             <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
