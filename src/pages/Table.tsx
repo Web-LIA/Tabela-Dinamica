@@ -11,6 +11,8 @@ import DownloadButton from '../components/table/DownloadButton'
 
 import editIcon from '../assets/icons/editIcon.svg'
 import checkIcon from '../assets/icons/checkIcon.svg'
+import visibleON from '../assets/icons/visivelOnIcon.svg'
+import visibleOFF from '../assets/icons/visivelOffIcon.svg'
 function Table() {
     const [data, setData] = useState<RowData[]>([
         {id: "00000", nome: "Ryan", idade: "20"},
@@ -176,16 +178,17 @@ function Table() {
            
             {showForm ? (
                 <>
-                <button onClick={()=> setShowForm(!showForm)}>Ocultar formulario</button>
+                <button onClick={()=> setShowForm(!showForm)} className={themes.visiButton}> <img src={visibleON} alt="Ocultar Formulario" /></button>
                 <div className={themes.formulario}>
-                    <button onClick={() => setIdVisibility(!idVisibility)}>Ocultar Id</button>
+                    
                     <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
                     <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+                    <button onClick={() => setIdVisibility(!idVisibility)} className={themes.idButton}>Ocultar Id</button>
                 </div>
                 </>
             ):(
                 <>
-                <button onClick={()=> setShowForm(!showForm)}>Mostrar formulario</button>
+                <button onClick={()=> setShowForm(!showForm)} className={themes.visiButton}><img src={visibleOFF} alt="Mostrar Formulario" /></button>
                 </>
             )}
                 

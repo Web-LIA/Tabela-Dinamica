@@ -171,7 +171,7 @@
     }
 }
 
-.baixarButton,.editarButton{
+.visiButton,.baixarButton,.editarButton{
     -webkit-backface-visibility: hidden;
     position: fixed;
     bottom: 10%;
@@ -228,9 +228,27 @@
             overflow-x: scroll;
         }
     }
-
+    .idButton{
+        margin-bottom: 5px;
+        color:white;
+        padding: 5px;
+        text-transform: uppercase;
+        font-weight: bolder;
+        background : rgb(190, 11, 11);
+        border: rgb(83, 17, 17) solid 2px;
+        font-size: larger;
+        cursor: pointer;
+        font-weight: bolder;
+        font-family:  'Gill Sans MT';
+        &:hover{
+            background-color: rgb(83, 17, 17);
+        }
+    }
 }
 
 .baixarButton{
     bottom: calc(10% + 70px);   
+}
+.visiButton{
+    right: calc(2.5% + 70px); 
 }
