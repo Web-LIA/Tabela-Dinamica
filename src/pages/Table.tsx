@@ -9,8 +9,8 @@ import TableRowEdit from '../components/table/TableRowEdit'
 import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../typesTable'
 import DownloadButton from '../components/table/DownloadButton'
 
-import editIcon from '../assets/editIcon.svg'
-import checkIcon from '../assets/checkIcon.svg'
+import editIcon from '../assets/icons/editIcon.svg'
+import checkIcon from '../assets/icons/checkIcon.svg'
 function Table() {
     const [data, setData] = useState<RowData[]>([
         {id: "00000", nome: "Ryan", idade: "20"},
@@ -180,6 +180,7 @@ function Table() {
         ): (
             <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
         )}
+        <DownloadButton tableData={data} fileName="tabela.csv"/>
         <div className={themes.tabela}>
         <table border={1}>
             <TableHeader 
@@ -214,7 +215,7 @@ function Table() {
             </tbody>
         </table>
         </div>
-        <DownloadButton tableData={data} fileName="tabela.csv"/>
+        
         </>
     )
 }

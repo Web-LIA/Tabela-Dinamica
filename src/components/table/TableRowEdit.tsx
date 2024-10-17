@@ -2,7 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { RowData, TableRowEditMethods, TableRowEditProps } from "../../typesTable"
 import themes from '../themes/Table.module.css'
-import checkIcon from '../../assets/checkIcon.svg'
+import checkIcon from '../../assets/icons/checkIcon.svg'
 
 function TableRowEdit(props: TableRowEditProps) {
     const rowData = props.rowData
