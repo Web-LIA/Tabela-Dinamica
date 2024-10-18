@@ -10,13 +10,13 @@ function Footer(){
             </div>
             <ul className={styles.icons}>
                 <li>
-                    <a href=''><FaGithubSquare/>Ryan</a>
+                    <a href='https://github.com/ari123rm'><FaGithubSquare/>Ryan</a>
                 </li>
                 <li>
-                    <a href=''><FaGithubSquare/>Ariel</a>
+                    <a href='https://github.com/RyanRodrics'><FaGithubSquare/>Ariel</a>
                 </li>
                 <li>
-                    <a href=''><FaGithubSquare/>André</a>
+                    <a href='https://github.com/Andrededede'><FaGithubSquare/>André</a>
                 </li>
             </ul>
         </footer>
