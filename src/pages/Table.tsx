@@ -8,11 +8,11 @@ import TableHeader from '../components/table/TableHeader'
 import TableRowEdit from '../components/table/TableRowEdit'
 import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../types/typesTable'
 import DownloadButton from '../components/table/DownloadButton'
-
 import editIcon from '../assets/icons/editIcon.svg'
 import checkIcon from '../assets/icons/checkIcon.svg'
 import visibleON from '../assets/icons/visivelOnIcon.svg'
 import visibleOFF from '../assets/icons/visivelOffIcon.svg'
+
 function Table() {
     const [data, setData] = useState<RowData[]>([
         {id: "00000", nome: "Ryan", idade: "20"},
