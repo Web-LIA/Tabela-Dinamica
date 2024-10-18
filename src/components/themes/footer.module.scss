@@ -1,0 +1,24 @@
+.footer{
+    background-color: black;
+    bottom: 15px;
+    .logo{
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        img{
+            height: 50px;
+            width: 50px;
+        }
+    }
+    .icons{
+        color: white;
+        display: block;
+        li{
+            a{
+                display: inline-flex;
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
