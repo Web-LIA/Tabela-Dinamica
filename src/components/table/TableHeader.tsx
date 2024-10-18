@@ -3,7 +3,7 @@ import { useState } from "react"
 import { TableHeaderProps } from "../../types/typesTable"
 import themes from '../themes/table.module.scss'
 import editarImg from '../../assets/home/Edit.png'
-import checkImg from '../../assets/checkIcon.svg'
+import checkImg from '../../assets/icons/checkIcon.svg'
 function TableHeader(props: TableHeaderProps) {
     const [editedKey, setEditedKey] = useState<string>("")
 

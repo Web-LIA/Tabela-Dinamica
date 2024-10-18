@@ -9,8 +9,10 @@ import TableRowEdit from '../components/table/TableRowEdit'
 import { RowData, TableRowMethods, TableRowEditMethods, TableHeaderMethods } from '../types/typesTable'
 import DownloadButton from '../components/table/DownloadButton'
 
-import editIcon from '../assets/editIcon.svg'
-import checkIcon from '../assets/checkIcon.svg'
+import editIcon from '../assets/icons/editIcon.svg'
+import checkIcon from '../assets/icons/checkIcon.svg'
+import visibleON from '../assets/icons/visivelOnIcon.svg'
+import visibleOFF from '../assets/icons/visivelOffIcon.svg'
 function Table() {
     const [data, setData] = useState<RowData[]>([
         {id: "00000", nome: "Ryan", idade: "20"},
@@ -26,6 +28,7 @@ function Table() {
     const [backupData, setBackupData] = useState<RowData[]>(data)
     const [idVisibility, setIdVisibility] = useState<boolean>(true)
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const [showForm, setShowForm] = useState<boolean>(true);
 
     function changeEditMode() {
         setBackupData(data)
@@ -165,21 +168,35 @@ function Table() {
         editColumnKey: editColumnKey,
         setEditRowId: setEditRowId
     }
-
+    
+    
     return (
         <>
         {editMode ? (
             <>
             <button onClick={changeEditMode} className={themes.editarButton}><img src={checkIcon} alt="Salvar Mudanças" /><div></div></button>
-            <div className={themes.formulario}>
-                <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
-                <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
-                <button onClick={() => setIdVisibility(!idVisibility)}>Ocultar Id</button>
-            </div>
+           
+            {showForm ? (
+                <>
+                <button onClick={()=> setShowForm(!showForm)} className={themes.visiButton}> <img src={visibleON} alt="Ocultar Formulario" /></button>
+                <div className={themes.formulario}>
+                    
+                    <FormAddColumn keys={keys} setNewKey={setNewKey} addColumn={addColumn} inputRef={inputRef}/>
+                    <FormAddRow keys={keys} data={data} updateNewRowData={updateNewRowData} addRow={addRow}/>
+                    <button onClick={() => setIdVisibility(!idVisibility)} className={themes.idButton}>Ocultar Id</button>
+                </div>
+                </>
+            ):(
+                <>
+                <button onClick={()=> setShowForm(!showForm)} className={themes.visiButton}><img src={visibleOFF} alt="Mostrar Formulario" /></button>
+                </>
+            )}
+                
             </>
         ): (
             <button onClick={changeEditMode} className={themes.editarButton}><img src={editIcon} alt="Modo Editar" /><div></div></button>
         )}
+        <DownloadButton tableData={data} fileName="tabela.csv"/>
         <div className={themes.tabela}>
         <table border={1}>
             <TableHeader 
@@ -214,7 +231,7 @@ function Table() {
             </tbody>
         </table>
         </div>
-        <DownloadButton tableData={data} fileName="tabela.csv"/>
+        
         </>
     )
 }

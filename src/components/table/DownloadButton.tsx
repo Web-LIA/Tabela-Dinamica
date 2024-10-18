@@ -1,6 +1,7 @@
 import React from "react"
+import downloadImg from "../../assets/icons/downloadIcon.svg"
 import { RowData } from "../../types/typesTable"
-
+import themes from "../themes/table.module.scss"
 type DownloadButtonProps = {
     tableData: RowData[],
     fileName: string
@@ -31,7 +32,7 @@ function DownloadButton(props: DownloadButtonProps) {
     }
       
     return (
-        <button onClick={() => downloadCSV(props.tableData, props.fileName)}>Baixar CSV</button>
+        <button onClick={() => downloadCSV(props.tableData, props.fileName)} className={themes.baixarButton}><img src={downloadImg} alt="Download Tabela CSV" /></button>
     )
 }
 
