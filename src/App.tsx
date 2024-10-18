@@ -9,9 +9,7 @@ import Footer from './components/footer/Footer';
 function App() {
   return (
     <BrowserRouter>
-      <div className = 'navBar'>
-        <NavBar/>
-      </div>
+      <NavBar/>
       <div className='rota'>
         <Routes>
           <Route path="/" element={<Home/>}/>
